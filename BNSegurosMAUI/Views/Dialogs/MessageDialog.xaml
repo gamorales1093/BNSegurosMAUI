@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="BNSegurosMAUI.Views.Dialogs.MessageDialog"
+       xmlns:prism="http://prismlibrary.com"
+       prism:ViewModelLocator.AutowireViewModel="Forced"
+       prism:DialogLayout.RelativeWidthRequest="0.85"
+       prism:DialogLayout.RelativeHeightRequest="0.35"
+       prism:DialogLayout.CloseOnBackgroundTapped="False"
+       prism:DialogLayout.MaskStyle="{StaticResource AlertMaskStyle}"
+       BackgroundColor="Transparent"
+       Style="{StaticResource AlertFrameStyle}">
+    <Grid VerticalOptions="CenterAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Image Margin="0,0,0,15" Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" />
+        <Label Margin="0,0,0,10" Style="{StaticResource AlertTitleLabelStyle}" TextColor="{StaticResource BlueTextColor}" Text="{Binding Title}" Grid.Row="1"  LineBreakMode="WordWrap" MaxLines="2"/>
+        <Label Style="{StaticResource AlertMessageLabelStyle}" Text="{Binding Message}" Margin="15,0,15,15" Grid.Row="2" LineBreakMode="WordWrap" MaxLines="2" />
+        <Button Style="{StaticResource AlertButtonStyle}" Text="{Binding AcceptButton}" Command="{Binding AcceptCommand}" HorizontalOptions="Center" Grid.Row="3" />
+    </Grid>
+</Frame>
+
+

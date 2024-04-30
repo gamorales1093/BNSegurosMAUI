@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Forced"
+             xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"             
+             xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls"
+             xmlns:effects="clr-namespace:BNSegurosMAUI.Effects"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:xamarinwork="clr-namespace:BNSegurosMAUI.Helpers" xmlns:local="clr-namespace:BNSegurosMAUI.Handlers"
+             x:Class="BNSegurosMAUI.Views.ContactAssistancePage"
+             BackgroundColor="{x:StaticResource PageBackgroundColor}"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,-5,0,0" Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}" BackgroundColor="#23387A">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button HeightRequest="30" WidthRequest="30" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"
+                       FontAttributes="Bold"
+                       FontFamily="AvenirBookBold"
+                       FontSize="{OnPlatform Android='20', iOS='18'}"
+                       Text="Contacto" Margin="0,0,0,0"
+                       HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}"
+                       VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+
+            <StackLayout Grid.Row="1" Orientation="Vertical" Spacing="0">
+                <StackLayout>
+    <OnPlatform x:TypeArguments="View">
+                        <On Platform="Android">
+                            <Frame Margin="25,30,25,0" CornerRadius="20" HeightRequest="40" >
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                                    <Image Margin="20,0,0,0" WidthRequest="15" HorizontalOptions="Start" Source="buscar"></Image>
+                                    <controls:MainEntry BackgroundColor="Transparent" VerticalOptions="CenterAndExpand"
+                                            BorderColor="Transparent"
+                                            EntryBackgroundColor="Transparent"
+                                            TextColor="#646464"
+                                            FontFamily="AvenirBook"
+                                            FontSize="16"
+                                            Text="{Binding SearchText}"
+                                            Placeholder="{utils:Text Search_EntryPlaceholder}"
+                                            PlaceholderColor="#b8b8b8"
+                                                        VerticalTextAlignment="Center"
+                                            HorizontalOptions="FillAndExpand">
+                                        <controls:MainEntry.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness" Default="20">
+                                                <On Platform="iOS" Value="10,0,0,0"/>
+                                                <On Platform="Android" Value="10,0,0,0"/>
+                                            </OnPlatform>
+                                        </controls:MainEntry.Margin>
+                                    </controls:MainEntry>
+
+
+                                </StackLayout>
+                                <Frame.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness" Default="20">
+                                        <On Platform="iOS" Value="5" />
+                                        <On Platform="Android" Value="0" />
+                                    </OnPlatform>
+                                </Frame.Padding>
+
+
+                            </Frame>
+                        </On>
+                        <On Platform="iOS">
+
+                            <Frame Margin="25,30,25,0" CornerRadius="20" HeightRequest="40" >
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                                    <Image Margin="10,0,0,0" WidthRequest="20" HorizontalOptions="Start" Source="lupa"></Image>
+                                    <controls:MainEntry BackgroundColor="Transparent"
+                                            BorderColor="Transparent"
+                                            EntryBackgroundColor="Transparent"
+                                            TextColor="#646464"
+                                            FontFamily="AvenirBook"
+                                            FontSize="16"
+                                            Text="{Binding SearchText}"
+                                            Placeholder="{utils:Text Search_EntryPlaceholder}"
+                                            PlaceholderColor="#b8b8b8"
+                                            HorizontalOptions="FillAndExpand">
+                                        <controls:MainEntry.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness" Default="20">
+                                                <On Platform="iOS" Value="10,0,0,0"/>
+                                                <On Platform="Android" Value="10,0,0,-5"/>
+                                            </OnPlatform>
+                                        </controls:MainEntry.Margin>
+                                    </controls:MainEntry>
+
+
+                                </StackLayout>
+                                <Frame.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness" Default="20">
+                                        <On Platform="iOS" Value="5" />
+                                        <On Platform="Android" Value="0" />
+                                    </OnPlatform>
+                                </Frame.Padding>
+
+
+                            </Frame>
+                            <!-- <controls:MainSearchBar BackgroundColor="Transparent"
+                                                    FontFamily="AvenirBook"
+                                                    FontSize="16"
+                                                    PlaceholderColor="#9f9f9f"
+                                                    BorderColor="#d8d8d8"
+                                                    
+                                                    ios:SearchBar.SearchBarStyle="Minimal"
+                                               Style="{DynamicResource CustomSearchBarStyle}" Text="{Binding SearchText, Mode=TwoWay}" Placeholder="{utils:Text Search_EntryPlaceholder}" HorizontalOptions="FillAndExpand" HeightRequest="40" Margin="20,20,20,0" />-->
+                        </On>
+                    </OnPlatform>
+                </StackLayout>
+
+            </StackLayout>
+
+            <controls:CustomCollectionView Grid.Row="2" ItemsUpdatingScrollMode="KeepScrollOffset" x:Name="ItemList" ItemsSource="{Binding DisplayedItems}" ItemTemplate="{StaticResource ItemRowTemplate}" SelectionMode="Single" SelectionChanged="SelectionChanged" ItemSizingStrategy="MeasureAllItems"  Margin="0,16,0,0">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Image Source="icsearchilu" HeightRequest="80" WidthRequest="80" Margin="0,142,0,0"/>
+                        <Label Style="{StaticResource FrequentQuestionsListEmptyStyle}" Text="{utils:Text FrequentQuestions_ListEmptyLabel}" />
+                    </StackLayout>
+                </CollectionView.EmptyView>
+            </controls:CustomCollectionView>
+        </Grid>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ItemRowTemplate">
+                <ContentView>
+                    <Frame Style="{StaticResource ItemCellFrameStyle}">
+                        <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,20,0,-25">
+                                <StackLayout Margin="32,0,0,0">
+                                    <Frame Style="{StaticResource ContactCircleImageFrameStyle}" HasShadow="False" IsClippedToBounds="True">
+                                        <ffimage:CachedImage Source="{Binding Image}" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                </StackLayout>
+                                <Label Style="{StaticResource ContactItemCellNameLabelStyle}" Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center" Margin="10,-25,0,0" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand" Margin="90,0,0,20">
+                                <Label Style="{StaticResource ContactAssistantTypeLabelStyle}" Text="{Binding TypeOfAssistance, TargetNullValue='Teléfonos'}" />
+                                <StackLayout HorizontalOptions="FillAndExpand" Spacing="15">
+                                    <Label Style="{StaticResource ContactAssistantNumberLabelStyle}" Text="{Binding PhoneNumber}" HorizontalOptions="Start" VerticalOptions="Center" TextColor="{StaticResource HyperLinkColor}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding PhoneNumber}" Command="{Binding BindingContext.CallRedirectCommand, Source={x:Reference ItemList}}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <AbsoluteLayout HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                                        <Label Style="{StaticResource ContactAssistantNumberLabelStyle}" Text="{Binding SecondPhoneNumber}" HorizontalOptions="Start" VerticalOptions="Center" TextColor="{StaticResource HyperLinkColor}"/>
+                                        <Button AbsoluteLayout.LayoutBounds="0.2,0.2,AutoSize,10" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" CommandParameter="{Binding SecondPhoneNumber}"  Command="{Binding BindingContext.CallRedirectCommand, Source={x:Reference ItemList}}"/>
+                                    </AbsoluteLayout>
+
+                                    <toolkit:Expander x:Name="expander" IsExpanded="{Binding IsCellExpanded}" >
+
+                                        <toolkit:Expander.Header>
+
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label Style="{StaticResource ContactAssistantNumberLabelStyle}" Text="Ver más información" HorizontalOptions="Start" VerticalOptions="Center" TextColor="{StaticResource HyperLinkColorDescription}" />
+                                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,0,32,0">
+                                                    <ImageButton WidthRequest="25" HeightRequest="25" Source="{Binding IsCellExpanded,Converter={StaticResource ExpandableIndicatorImageConverter},ConverterParameter=1}" Command="{Binding BindingContext.MoreInfoItemCommand, Source={x:Reference ItemList}}" CommandParameter="{Binding .}" BackgroundColor="Transparent"/>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </toolkit:Expander.Header>
+                                        <toolkit:Expander.Content>
+                                            <StackLayout IsVisible="{Binding IsCellExpanded}" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" Margin="0,0,32,0">
+                                                <Label Style="{StaticResource ContactAssistantDetailLabelStyle}" Text="{Binding Detail}" />
+                                            </StackLayout>
+                                        </toolkit:Expander.Content>
+                                    </toolkit:Expander>
+
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                        <Frame.Effects>
+                            <effects:ShadowEffect Radius="{OnPlatform Android='2',iOS='0.5'}" Color="Gray" />
+                        </Frame.Effects>
+                    </Frame>
+                </ContentView>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

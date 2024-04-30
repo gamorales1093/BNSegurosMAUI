@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Automatic"
+             xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"
+             xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" xmlns:handlers="clr-namespace:BNSegurosMAUI.Handlers"
+             x:Class="BNSegurosMAUI.Views.InsuranceDetailPage"
+             BackgroundColor="{x:StaticResource PageBackgroundColor}"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#FFFFFF" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}" BackgroundColor="#23387A" Margin="0,-5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button HeightRequest="30" WidthRequest="30" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"  FontFamily="AvenirBookBold" FontAttributes="Bold" FontSize="{OnPlatform Android='20', iOS='18'}" Text="{Binding Title}" Margin="0,0,0,0" HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}" VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+
+            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="40,30,40,0" Spacing="10">
+                <!-- DESCRIPCIÓN -->
+                <handlers:JustifiedLabel JustifyText="False" TextType="Text"  Style="{x:StaticResource PageParagraphStyle}" Text="{Binding Insurance.Description}" />
+                <!--CONTACTO-->
+                <StackLayout BackgroundColor="White" Margin="0,20,0,0">
+                    <Label Style="{StaticResource FormTitleStyle}" Text="Solicitar asistencia"/>
+                    <handlers:JustifiedLabel JustifyText="False" TextType="Text"  Style="{x:StaticResource PageParagraphStyle}" Text="Para conocer más información sobre su seguro comuníquese al 2212-9970."/>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Margin="0,0,10,0" Source="icinsurancecontact" WidthRequest="30" VerticalOptions="Center"/>
+                        <Label Style="{StaticResource ItemInsuranceButtonStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Llame a su aseguradora"
+                                          TextColor="{DynamicResource BlueTextColor}"
+                                          FontFamily="OpenSansSemibold">
+
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToContactPageCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- COTIZAR -->
+                <Button Margin="0,15,0,0" WidthRequest="170" Style="{x:StaticResource MainMediumButtonStyle}" Text="{Binding ButtonName}" Command="{Binding RequestInsuranceCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

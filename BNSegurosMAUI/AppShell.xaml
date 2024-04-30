@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BNSegurosMAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BNSegurosMAUI.Views"
+    xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"
+    xmlns:Components="clr-namespace:BNSegurosMAUI.Views.Components"
+    x:Name="FlyoutView"
+    FlyoutHeaderBehavior="Scroll"
+    Shell.NavBarHasShadow="False"
+    Shell.ForegroundColor="Black"
+    Shell.BackgroundColor="White"
+    FlyoutBackgroundColor="White"
+    FlowDirection="LeftToRight"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    ItemTemplate="{StaticResource FlyoutTemplateSelector}"
+    MenuItemTemplate="{StaticResource MenuItemNormal}">
+
+
+    <!--  Styles and Resources -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Shell">
+                <Setter Property="FlowDirection" Value="RightToLeft" />
+            </Style>
+
+            <DataTemplate x:Key="FlyoutItemNormal">
+                <StackLayout
+                    BackgroundColor="White"
+                    Orientation="Horizontal"
+                    Padding="24, 8"
+                    Margin="0, 5">
+                    <Image
+                        Source="{Binding FlyoutIcon}"
+                        HeightRequest="48"
+                        WidthRequest="48"
+                        Aspect="AspectFit"
+                        VerticalOptions="Center"
+                        Margin="0, 0, 12, 0" />
+                    <StackLayout
+                        Orientation="Vertical"
+                        VerticalOptions="Center">
+                        <Label
+                            Text="{Binding Title}"
+                            TextColor="#1f4193"
+                            />
+                        <Label
+                            Text="{Binding Description}"
+                            TextColor="#1f4193"
+                           />
+                    </StackLayout>
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="FlyoutItemMenu">
+                <Grid Padding="10,5" ColumnSpacing="10" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image  Source="{Binding FlyoutIcon}" Grid.Column="0" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20"/>
+                    <Label Text="{Binding Title}" Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource HomeImageButtonTextStyle}"/>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="FlyoutItemHidden">
+                <StackLayout
+                    HeightRequest="0"
+                    Padding="0"
+                    Margin="0" />
+            </DataTemplate>
+
+            <DataTemplate x:Key="FlyoutItemSeparator">
+                <StackLayout
+                    Padding="0, 8"
+                    Margin="0">
+                    <BoxView
+                        HeightRequest="1"
+                        BackgroundColor="{StaticResource WhiteWithTransparentColor}" />
+                </StackLayout>
+            </DataTemplate>
+
+            <Components:CustomFlyoutTemplateSelector
+                x:Key="FlyoutTemplateSelector"
+                Normal="{StaticResource FlyoutItemNormal}"
+                Menu="{StaticResource FlyoutItemMenu}"
+                Hidden="{StaticResource FlyoutItemHidden}"
+                Separator="{StaticResource FlyoutItemSeparator}" />
+
+            <DataTemplate x:Key="MenuItemNormal">
+                <StackLayout
+                    Orientation="Horizontal"
+                    Padding="24, 10"
+                    Margin="0">
+                    <Label
+                        Text="{Binding Text}"
+                        TextColor="red"
+                        VerticalOptions="Center"
+                        />
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Shell.Resources>
+    <!--  Header -->
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout BackgroundColor="#23387A">
+                <StackLayout.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,-1,0,0" />
+                    </OnPlatform>
+                </StackLayout.Margin>
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,20,0,0" />
+                    </OnPlatform>
+                </StackLayout.Padding>
+                <StackLayout.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="100" />
+                        <On Platform="Android" Value="58" />
+
+                    </OnPlatform>
+                </StackLayout.HeightRequest>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    <!--  Header -->
+
+    <Components:CustomFlyoutItem
+        x:Name="menu_home"
+        Type="Hidden"
+        Title="Inicio">
+        <ShellContent
+            Route="assistant"
+            ContentTemplate="{DataTemplate local:HomePage}"  />
+    </Components:CustomFlyoutItem>
+
+    <Components:CustomFlyoutItem
+        x:Name="menu_contacto"
+        Type="Menu" Title="Contáctenos" Icon="icmenucontactitem">
+        <ShellContent
+            Route="assistant"
+            ContentTemplate="{DataTemplate local:TestStyles}"  />
+    </Components:CustomFlyoutItem>
+    <Components:CustomFlyoutItem
+        x:Name="menu_answer"
+        Type="Menu" Title="Preguntas Frecuentes" Icon="icmenufaqitem">
+        <ShellContent
+            Route="assistant"
+            ContentTemplate="{DataTemplate local:FAQPage}"  />
+    </Components:CustomFlyoutItem>
+
+    <Components:CustomFlyoutItem
+        x:Name="menu_novelties"
+        Type="Menu" Title="Novedades" Icon="icmenunoveltyitem">
+        <ShellContent
+            Route="assistant"
+            ContentTemplate="{DataTemplate local:TipPage}"  />
+    </Components:CustomFlyoutItem>
+
+</Shell>
+

@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Forced"
+             xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls"
+             xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"
+             xmlns:effects="clr-namespace:BNSegurosMAUI.Effects"
+             x:Class="BNSegurosMAUI.Views.InsurancesPage"
+             xmlns:local="clr-namespace:BNSegurosMAUI.Views"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:BNSegurosMAUI.ViewModels"
+             BackgroundColor="{x:StaticResource PageBackgroundColor}"
+             Title="{Binding Title}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="#FFFFFF" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,-5,0,0" Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}" BackgroundColor="#23387A">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" VerticalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button HeightRequest="30" WidthRequest="30" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"  FontFamily="AvenirBookBold" FontAttributes="Bold" FontSize="{OnPlatform Android='20', iOS='18'}" Text="Seguros" Margin="0,0,0,0" HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}" VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+            <!-- BÚSQUEDA -->
+            <StackLayout Grid.Row="1" >
+  <OnPlatform x:TypeArguments="View">
+                        <On Platform="Android">
+                            <Frame Margin="25,30,25,0" CornerRadius="20" HeightRequest="40" >
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                                    <Image Margin="20,0,0,0" WidthRequest="15" HorizontalOptions="Start" Source="buscar"></Image>
+                                    <controls:MainEntry BackgroundColor="Transparent" VerticalOptions="CenterAndExpand"
+                                            BorderColor="Transparent"
+                                            EntryBackgroundColor="Transparent"
+                                            TextColor="#646464"
+                                            FontFamily="AvenirBook"
+                                            FontSize="16"
+                                            Text="{Binding SearchText}"
+                                            Placeholder="{utils:Text Search_EntryPlaceholder}"
+                                            PlaceholderColor="#b8b8b8"
+                                                        VerticalTextAlignment="Center"
+                                            HorizontalOptions="FillAndExpand">
+                                        <controls:MainEntry.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness" Default="20">
+                                                <On Platform="iOS" Value="10,0,0,0"/>
+                                                <On Platform="Android" Value="10,0,0,0"/>
+                                            </OnPlatform>
+                                        </controls:MainEntry.Margin>
+                                    </controls:MainEntry>
+
+
+                                </StackLayout>
+                                <Frame.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness" Default="20">
+                                        <On Platform="iOS" Value="5" />
+                                        <On Platform="Android" Value="0" />
+                                    </OnPlatform>
+                                </Frame.Padding>
+
+
+                            </Frame>
+                        </On>
+                        <On Platform="iOS">
+
+                            <Frame Margin="25,30,25,0" CornerRadius="20" HeightRequest="40" >
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                                    <Image Margin="10,0,0,0" WidthRequest="20" HorizontalOptions="Start" Source="lupa"></Image>
+                                    <controls:MainEntry BackgroundColor="Transparent"
+                                            BorderColor="Transparent"
+                                            EntryBackgroundColor="Transparent"
+                                            TextColor="#646464"
+                                            FontFamily="AvenirBook"
+                                            FontSize="16"
+                                            Text="{Binding SearchText}"
+                                            Placeholder="{utils:Text Search_EntryPlaceholder}"
+                                            PlaceholderColor="#b8b8b8"
+                                            HorizontalOptions="FillAndExpand">
+                                        <controls:MainEntry.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness" Default="20">
+                                                <On Platform="iOS" Value="10,0,0,0"/>
+                                                <On Platform="Android" Value="10,0,0,-5"/>
+                                            </OnPlatform>
+                                        </controls:MainEntry.Margin>
+                                    </controls:MainEntry>
+
+
+                                </StackLayout>
+                                <Frame.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness" Default="20">
+                                        <On Platform="iOS" Value="5" />
+                                        <On Platform="Android" Value="0" />
+                                    </OnPlatform>
+                                </Frame.Padding>
+
+
+                            </Frame>
+                            <!-- <controls:MainSearchBar BackgroundColor="Transparent"
+                                                    FontFamily="AvenirBook"
+                                                    FontSize="16"
+                                                    PlaceholderColor="#9f9f9f"
+                                                    BorderColor="#d8d8d8"
+                                                    
+                                                    ios:SearchBar.SearchBarStyle="Minimal"
+                                               Style="{DynamicResource CustomSearchBarStyle}" Text="{Binding SearchText, Mode=TwoWay}" Placeholder="{utils:Text Search_EntryPlaceholder}" HorizontalOptions="FillAndExpand" HeightRequest="40" Margin="20,20,20,0" />-->
+                        </On>
+                    </OnPlatform>
+
+                <!-- SEGUROS-->
+                <CollectionView x:Name="ItemList"  VerticalScrollBarVisibility="Never" VerticalOptions="FillAndExpand" ItemsSource="{Binding DisplayedInsurances}" Margin="25,0,25,25" SelectionChanged="SelectionChanged" SelectionMode="Single">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0,15,0,0" ColumnSpacing="0" VerticalOptions="FillAndExpand" Margin="0,0,0,0" BackgroundColor="Transparent" >
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70"/>
+                                </Grid.RowDefinitions>
+                                <Frame Grid.Row="0" BackgroundColor="{DynamicResource InsuranceItemImageBackgroundColor}" VerticalOptions="FillAndExpand" Margin="3" CornerRadius="10">
+
+
+                                    <Grid  Background="White">
+                                        <StackLayout   Background="White" Orientation="Horizontal">
+                                            <StackLayout Padding="0" WidthRequest="70" BackgroundColor="{DynamicResource InsuranceItemImageBackgroundColor}">
+                                                <Image  Source="{Binding Image}" Margin="0,0,0,0" HeightRequest="40" WidthRequest="56" VerticalOptions="CenterAndExpand"
+                                                       Aspect="AspectFit"/>
+
+                                            </StackLayout>
+
+                                            <StackLayout  Padding="0" BackgroundColor="White"  HorizontalOptions="FillAndExpand">
+                                                <Label Text="{Binding Name}" Margin="20,0,0,0" VerticalOptions="CenterAndExpand"
+                                                       Style="{DynamicResource InsuranceItemTextStyle}" />
+
+                                            </StackLayout>
+                                            <StackLayout.Margin>
+
+                                                <OnPlatform x:TypeArguments="Thickness">
+                                                    <On Platform="iOS" Value="-15,-18,-15,-18"/>
+                                                    <On Platform="Android" Value="-13,0,0,0"/>
+                                                </OnPlatform>
+                                            </StackLayout.Margin>
+                                        </StackLayout>
+
+                                        <Grid.HeightRequest>
+
+                                            <OnPlatform x:TypeArguments="x:Double">
+                                                <On Platform="Android" Value="58"/>
+                                                <On Platform="iOS" Value="22"/>
+                                            </OnPlatform>
+                                        </Grid.HeightRequest>
+                                    </Grid>
+                                     <Frame.GestureRecognizers>
+
+                                      <TapGestureRecognizer
+                                            Command ="{Binding Source={RelativeSource AncestorType={x:Type viewModels:InsurancesPageViewModel}}, Path=ItemSelectedCommand}"
+                                            CommandParameter="{Binding .}"></TapGestureRecognizer>
+
+                                </Frame.GestureRecognizers>
+                                </Frame>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <StackLayout>
+                            <Image Source="icsearchilu" MinimumHeightRequest="80" MinimumWidthRequest="80" Margin="0,142,0,0"/>
+                            <Label Style="{DynamicResource FrequentQuestionsListEmptyStyle}" Text="{utils:Text FrequentQuestions_ListEmptyLabel}" />
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

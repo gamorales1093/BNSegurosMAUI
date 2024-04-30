@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>BNSegurosMAUI</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<!-- Display name for publish -->
+		<ApplicationTitle>BNSegurosMAUI</ApplicationTitle>
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.bnsegurosmaui</ApplicationId>
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+		<CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+		<CreatePackage>false</CreatePackage>
+		<CodesignProvision>BN Corredora de seguros AdHoc QA</CodesignProvision>
+		<CodesignKey>iPhone Distribution</CodesignKey>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\icon.png" ForegroundFile="Resources\AppIcon\icon.png" Color="White" />
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="#FFFFFF" BaseSize="128,128" />
+
+				<!-- Custom Fonts cambios -->
+		<MauiFont Include="Resources\Fonts\*" />
+					<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\icbn.png" BaseSize="24,24" />
+		<MauiImage Update="Resources\Images\icuser.png" BaseSize="24,24" />
+		<MauiImage Update="Resources\Images\icphone.png" BaseSize="24,24" />
+
+
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png">
+		  <Resize>True</Resize>
+		  <BaseSize>300,185</BaseSize>
+		</MauiImage>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.5.3" />
+		<PackageReference Include="CardsView.Maui" Version="0.0.6" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Microsoft.AppCenter" Version="5.0.3" />
+		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.3" />
+		<PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.3" />
+		<PackageReference Include="PCLAppConfig" Version="1.0.1" />
+		<PackageReference Include="FFImageLoading.Maui" Version="1.0.9" />
+		<PackageReference Include="Prism.Maui" Version="9.0.401-pre" />
+		<PackageReference Include="Prism.DryIoc.Maui" Version="9.0.401-pre" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
+		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.1.45" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="25.1.38" />
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+		<PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.553" />
+		<PackageReference Include="Microsoft.Maui.Extensions" Version="6.0.553" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="24.1.45" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Converters\" />
+		<None Remove="Effects\" />
+		<None Remove="Helpers\" />
+		<None Remove="Models\" />
+		<None Remove="Resources\Fonts\Avenir Book.ttf" />
+		<None Remove="Utils\" />
+		<None Remove="ViewModels\" />
+		<None Remove="ViewModels\Dialogs\" />
+		<None Remove="Views\" />
+		<None Remove="Views\Controls\" />
+		<None Remove="Views\Dialogs\" />
+		<None Remove="WebServices\" />
+		<None Remove="WebServices\Client\" />
+		<None Remove="Resources\Text\" />
+		<None Remove="Views\Components\" />
+		<None Remove="Resources\Images\llama.png" />
+		<None Remove="Resources\Images\HomeIcBtnWeb.png" />
+		<None Remove="Resources\Images\HomeIcBtnTipBlue.png" />
+		<None Remove="Resources\Images\HomeIcBtnTip.png" />
+		<None Remove="Resources\Images\HomeIcBtnSinisterBlue.png" />
+		<None Remove="Resources\Images\HomeIcBtnSinister.png" />
+		<None Remove="Resources\Images\HomeIcBtnProcedureBlue.png" />
+		<None Remove="Resources\Images\HomeIcBtnProcedure.png" />
+		<None Remove="Resources\Images\HomeIcBtnPhone.png" />
+		<None Remove="Resources\Images\HomeIcBtnMap.png" />
+		<None Remove="Resources\Images\HomeIcBtnMail.png" />
+		<None Remove="Resources\Images\HomeIcBtnInsuranceBlue.png" />
+		<None Remove="Resources\Images\HomeIcBtnInsurance.png" />
+		<None Remove="Resources\Images\HomeIcBtnFAQ.png" />
+		<None Remove="Resources\Images\HomeIcBtnContact.png" />
+		<None Remove="Resources\Images\HomeIcBtnBuyInsurance.png" />
+		<None Remove="Resources\Images\BackArrowIcBtn.png" />
+		<None Remove="Resources\Images\homeIcBtnWeb.png" />
+		<None Remove="Resources\Images\homeIcBtnTipBlue.png" />
+		<None Remove="Resources\Images\homeIcBtnProcedure.png" />
+		<None Remove="Resources\Images\homeIcBtnBuyInsurance.png" />
+		<None Remove="Resources\Images\homeIcBtnInsurance.png" />
+		<None Remove="Resources\Images\homeIcBtnInsuranceBlue.png" />
+		<None Remove="Resources\Images\homeIcBtnProcedureBlue.png" />
+		<None Remove="Resources\Images\homeIcBtnSinisterBlue.png" />
+		<None Remove="Resources\Images\homeIcBtnPhone.png" />
+		<None Remove="Resources\Images\homeIcBtnFAQ.png" />
+		<None Remove="Resources\Images\homeIcBtnTip.png" />
+		<None Remove="Resources\Images\homeIcBtnSinister.png" />
+		<None Remove="Resources\Images\backArrowIcBtn.png" />
+		<None Remove="Resources\Images\homeIcBtnContact.png" />
+		<None Remove="Resources\Images\homeIcBtnMail.png" />
+		<None Remove="Resources\Images\homeIcBtnMap.png" />
+		<None Remove="Resources\Images\IcMenuNoveltyItem.png" />
+		<None Remove="Resources\Images\IcMenuFAQtItem.png" />
+		<None Remove="Resources\Images\IcMenuContactItem.png" />
+		<None Remove="Resources\Images\IcChevronSmallDown.png" />
+		<None Remove="Resources\Images\IcChevronSmall.png" />
+		<None Remove="Resources\Images\IcChevronBigDown.png" />
+		<None Remove="Resources\Images\IcChevronBig.png" />
+		<None Remove="Resources\Images\IcBnAlert.png" />
+		<None Remove="Resources\Images\IcFail.png" />
+		<None Remove="Resources\Images\IcMailMedium.png" />
+		<None Remove="Resources\Images\IcHeaderLogo.png" />
+		<None Remove="Resources\Images\InsuranceIcVehicle.png" />
+		<None Remove="Resources\Images\InsuranceIcOthers.png" />
+		<None Remove="Resources\Images\InsuranceIcMedical.png" />
+		<None Remove="Resources\Images\InsuranceIcJobless.png" />
+		<None Remove="Resources\Images\InsuranceIcHousing.png" />
+		<None Remove="Resources\Images\InsuranceIcBicycle.png" />
+		<None Remove="Handlers\" />
+		<None Remove="Resources\Images\tree.jpg" />
+		<None Remove="Resources\Images\IcBtnMoreInfo.png" />
+		<None Remove="Resources\Images\IcBtnBuyInsurance.png" />
+		<None Remove="Resources\Images\IcBn.png" />
+		<None Remove="Resources\Images\IcUser.png" />
+		<None Remove="Resources\Images\IcPhone.png" />
+		<None Remove="Resources\Images\IcCustomerServiceCircle.png" />
+		<None Remove="Resources\Images\IcComptrollerCircle.png" />
+		<None Remove="Resources\Images\IcCompensationCircle.png" />
+		<None Remove="Resources\Images\IcCallCircle.png" />
+		<None Remove="Resources\Images\IcPinCircle.png" />
+		<None Remove="Resources\Images\IcMailCircle.png" />
+		<None Remove="Resources\Images\IcFb.png" />
+		<None Remove="Resources\Images\IcIn.png" />
+		<None Remove="Resources\Images\IcTw.png" />
+		<None Remove="Resources\Images\IcTi.png" />
+		<None Remove="Resources\Images\icsearchilu.png" />
+		<None Remove="Resources\Images\icphonesmall.png" />
+		<None Remove="Resources\Images\icmailsmall.png" />
+		<None Remove="Resources\Images\icdownload.png" />
+		<None Remove="Resources\Images\iccontact.png" />
+		<None Remove="Resources\Images\icinsurancecontact.png" />
+		<None Remove="Resources\Images\icupload.png" />
+		<None Remove="Resources\Images\icreclaiminsuvehicle.png" />
+		<None Remove="Resources\Images\icreclaiminsuhome.png" />
+		<None Remove="Resources\Images\icreclaimInsujob.png" />
+		<None Remove="Resources\Images\icreclaiminsulife.png" />
+		<None Remove="Resources\Images\icopavoucher.png" />
+		<None Remove="Resources\Images\icopavariation.png" />
+		<None Remove="Resources\Images\icopaemit.png" />
+		<None Remove="Resources\Images\icopaduplicate.png" />
+		<None Remove="Resources\Images\icopaconstancy.png" />
+		<None Remove="Resources\AppIcon\icon.png" />
+		<None Remove="Resources\Images\lupa.png" />
+		<None Remove="Resources\Images\buscar.png" />
+		<None Remove="Resources\Images\IcDflAssis.png" />
+		<None Remove="Resources\Fonts\Sans Serif Medium.ttf" />
+		<None Remove="Resources\Fonts\Araboto Bold 400.ttf" />
+		<None Remove="Resources\Fonts\Araboto Medium 400.ttf" />
+		<None Remove="Resources\Fonts\Araboto Normal 400.ttf" />
+		<None Remove="Resources\Fonts\Molde W00 Semibold.ttf" />
+		<None Remove="Resources\Fonts\molde-regular.ttf" />
+		<None Remove="Resources\Fonts\Avenir Black.ttf" />
+		<None Remove="Resources\Fonts\OpenSans-Bold.ttf" />
+		<None Remove="Resources\Fonts\Roboto-Bold.ttf" />
+		<None Remove="Resources\Fonts\Roboto-Regular.ttf" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Converters\" />
+		<Folder Include="Effects\" />
+		<Folder Include="Helpers\" />
+		<Folder Include="Models\" />
+		<Folder Include="Utils\" />
+		<Folder Include="ViewModels\" />
+		<Folder Include="ViewModels\Dialogs\" />
+		<Folder Include="Views\" />
+		<Folder Include="Views\Controls\" />
+		<Folder Include="Views\Dialogs\" />
+		<Folder Include="WebServices\" />
+		<Folder Include="WebServices\Client\" />
+		<Folder Include="Resources\Text\" />
+		<Folder Include="Views\Components\" />
+		<Folder Include="Handlers\" />
+	</ItemGroup>
+	<ItemGroup>
+		<BundleResource Include="Resources\Fonts\Avenir Book.ttf" />
+		<BundleResource Include="Resources\Raw\TextResources.resx" />
+		<BundleResource Include="Resources\AppIcon\icon.png" />
+		<BundleResource Include="Resources\Fonts\Sans Serif Medium.ttf" />
+		<BundleResource Include="Resources\Fonts\Araboto Bold 400.ttf" />
+		<BundleResource Include="Resources\Fonts\Araboto Medium 400.ttf" />
+		<BundleResource Include="Resources\Fonts\Araboto Normal 400.ttf" />
+		<BundleResource Include="Resources\Fonts\Molde W00 Semibold.ttf" />
+		<BundleResource Include="Resources\Fonts\molde-regular.ttf" />
+		<BundleResource Include="Resources\Fonts\Avenir Black.ttf" />
+		<BundleResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
+		<BundleResource Include="Resources\Fonts\Roboto-Bold.ttf" />
+		<BundleResource Include="Resources\Fonts\Roboto-Regular.ttf" />
+	</ItemGroup>
+	<ItemGroup>
+		<MauiXaml Update="Views\BuyInsurancePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\ContactAgentListPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\ContactAgentPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\ContactAssistancePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\ContactPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\CotizeInsurancePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\FAQPage.xaml">
+			<SubType>Designer</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\HTMLPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\HomePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\InsuranceDetailPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\InsurancesPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\NoticePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\OnlineInsuranceDetailPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\OnlineInsurancesPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\ProcedureFormPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\RequestInsurancePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\RequestProcedurePage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\SinisterPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\SinisterStepsPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\TipPage.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\Controls\DropDown.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\Dialogs\MessageDialog.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Remove="Resources\Raw\TextResources.resx" />
+	</ItemGroup>
+
+	<!-- Android -->
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
+		<Compile Remove="**\*.Android.cs" />
+		<None Include="**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+	</ItemGroup>
+	<!-- iOS and Mac Catalyst -->
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true AND $(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
+		<Compile Remove="**\*.MaciOS.cs" />
+		<None Include="**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+	</ItemGroup>
+	<!-- Windows -->
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+		<Compile Remove="**\*.Windows.cs" />
+		<None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+	</ItemGroup>
+</Project>

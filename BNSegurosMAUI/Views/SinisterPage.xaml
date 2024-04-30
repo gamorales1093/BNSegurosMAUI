@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Forced"
+             xmlns:effects="clr-namespace:BNSegurosMAUI.Effects"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="BNSegurosMAUI.Views.SinisterPage"
+             BackgroundColor="White"
+             FlowDirection="LeftToRight"
+             Title="{Binding Title}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <!--HEADER-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}" BackgroundColor="#23387A" Margin="0,-5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"  FontFamily="AvenirBook" FontAttributes="Bold" FontSize="{OnPlatform Android='20', iOS='18'}" Text="{Binding Title}" Margin="0,0,0,0" HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}" VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+            <!--CONTENT-->
+            <CollectionView x:Name="ItemList" Grid.Row="1" ItemsSource="{Binding DisplayedItems}" SelectionChanged="SelectionChanged" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame Style="{StaticResource ItemCellFrameStyle}" BackgroundColor="White">
+                                <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="0" Margin="0,15,0,15">
+                                        <StackLayout Margin="15,0,0,0">
+                                            <Frame Style="{StaticResource ContactCircleImageFrameStyle}" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="{x:StaticResource OpaIconBackgroundColor}" HasShadow="False" IsClippedToBounds="True">
+                                                <ffimage:CachedImage WidthRequest="52" HeightRequest="52" Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            </Frame>
+                                        </StackLayout>
+                                        <Label Style="{StaticResource ContactItemCellNameLabelStyle}" TextColor="{x:StaticResource OpaTitleTextColor}" Text="{Binding Description}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="20,0,0,0" />
+                                    </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.ItemSelectedCommand, Source={x:Reference ItemList}}" CommandParameter="{Binding .}" ></TapGestureRecognizer>
+
+                                </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <Frame.Effects>
+                                    <effects:ShadowEffect Radius="{OnPlatform Android='2',iOS='0.5'}" Color="Gray" />
+                                </Frame.Effects>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

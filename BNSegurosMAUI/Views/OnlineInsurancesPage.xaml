@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Automatic"
+             xmlns:ctrls="clr-namespace:BNSegurosMAUI.Views.Controls"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" xmlns:handlers="clr-namespace:BNSegurosMAUI.Handlers"
+             x:Class="BNSegurosMAUI.Views.OnlineInsurancesPage"
+             FlowDirection="LeftToRight"
+             BackgroundColor="{x:StaticResource PageBackgroundColor}"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#FFFFFF" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}" BackgroundColor="#23387A" Margin="0,-5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button HeightRequest="30" WidthRequest="30" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"  FontFamily="AvenirBookBold" FontSize="{OnPlatform Android='20', iOS='18'}" FontAttributes="Bold" Text="{Binding Title}" Margin="0,0,0,0" HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}" VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+
+            <!--BODY-->
+            <ScrollView Orientation="Vertical" Grid.Row="1">
+                <StackLayout>
+                    <StackLayout x:Name="TitlePage" Margin="20,30,20,0">
+                        <Label Style="{StaticResource PageHeading1Style}" Text="Seguros en línea"/>
+                        <handlers:JustifiedLabel Margin="0,5,0,0" JustifyText="True" TextType="Text" Style="{x:StaticResource PageParagraphStyle}" Text="Contrate su seguro de forma segura y sencilla, y disfrute su vida con la tranquilidad de estar protegido."/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Frame
+                            x:Name="CarruselContainer"
+                            BorderColor="Transparent"
+                            CornerRadius="0"
+                            Padding="0,0,0,0"
+                            Margin="0,15,0,0"
+                            HasShadow="false">
+                            <cards:CoverFlowView
+                                SlideShowDuration="3500"
+                                PositionShiftValue="75"
+                                
+                                IsCyclical="false"
+                                SelectedIndex="{Binding CurrentIndex}"
+                                ItemsSource="{Binding CarouselItems}">
+                                <x:Arguments>
+                                    <proc:CoverFlowProcessor ScaleFactor="1" OpacityFactor="0.25" />
+                                </x:Arguments>
+
+
+                                <cards:CoverFlowView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame Margin="25,0,25,30" BorderColor="Transparent">
+                                            <VerticalStackLayout>
+                                                <Frame
+                                                    HeightRequest="350"
+                                                    CornerRadius="20"
+                                                    BorderColor="Transparent"
+                                                    VerticalOptions="FillAndExpand"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Padding="0" 
+                                                    HasShadow="false"
+                                                    IsClippedToBounds="true">
+                                                    <ffimage:CachedImage
+                                                        Source="{Binding Image}"
+                                                        Aspect="Fill"/>
+                                                </Frame>
+
+                                                <StackLayout Margin="0,5,0,0" HeightRequest="70" Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                    <Label Margin="5,0,5,0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" Style="{StaticResource FormTitleStyle}" FontSize="18" Text="{Binding Name}"/>
+                                                    <Frame IsVisible="{Binding ComingSoon}" Margin="5,0,5,0" HasShadow="False" BackgroundColor="{x:StaticResource MainMediumButtonColor}" Padding="4" CornerRadius="10" VerticalOptions="CenterAndExpand">
+                                                        <Label Text="PRÓXIMAMENTE" TextColor="{x:StaticResource HomePageBackgroundColor}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                    </Frame>
+                                                </StackLayout>
+
+                                            </VerticalStackLayout>
+                                        </Frame>
+                                    </DataTemplate>
+                                </cards:CoverFlowView.ItemTemplate>
+
+                                <controls:IndicatorsControl
+                                        ToFadeDuration="3500"
+                                        
+                                        Margin="0,0,0,10"
+                                        SelectedIndicatorStyle="{StaticResource OnlineActiveIndicator}"
+                                        UnselectedIndicatorStyle="{StaticResource OnlineInactiveIndicator}"/>
+                            </cards:CoverFlowView>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Frame Margin="0,0,10,0"  BackgroundColor="{StaticResource HomePageBackgroundColor}" HorizontalOptions="Center" CornerRadius="10" HasShadow="False" HeightRequest="50"  Padding="10">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowOnlineInsuranceDetailCommand}"/>
+                                </StackLayout.GestureRecognizers>
+                                <ImageButton BackgroundColor="Transparent" Source="icbtnmoreinfo"/>
+                                <Label FontSize="16" Margin="0,0,15,0" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontFamily="AvenirBookBold" FontAttributes="Bold" TextColor="White" Text="VER MÁS"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame BackgroundColor="{x:StaticResource BuyButtonColor}" CornerRadius="10" HasShadow="False" HeightRequest="50"  Padding="10">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BuyInsuranceCommand}"/>
+                                </StackLayout.GestureRecognizers>
+                                <ImageButton BackgroundColor="Transparent" Source="icbtnbuyinsurance"/>
+                                <Label FontSize="16" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontFamily="AvenirBookBold"  FontAttributes="Bold" TextColor="White" Text="COMPRAR" Margin="0,0,15,0"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

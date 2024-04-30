@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Forced"
+             x:Class="BNSegurosMAUI.Views.ContactAgentPage"
+             xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="{x:StaticResource PageBackgroundColor}"
+             FlowDirection="LeftToRight"
+             Title="{Binding Title}" >
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False">
+        </BackButtonBehavior>
+    </Shell.BackButtonBehavior>
+    <ContentPage.Content>
+
+        <Grid BackgroundColor="#FFFFFF" RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,-5,0,0" Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}" BackgroundColor="#23387A">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button HeightRequest="30" WidthRequest="30"
+                            AbsoluteLayout.LayoutBounds="0.2,0.2,20,20"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            BorderColor="Transparent" BackgroundColor="Transparent"
+                            Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"
+                       FontAttributes="Bold"
+                       FontSize="{OnPlatform Android='20', iOS='18'}"
+                       FontFamily="AvenirBookBold"
+                       Text="Contacto" Margin="0,0,0,0"
+                       HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}"
+                       VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+            <StackLayout Spacing="0" Grid.Row="1" Orientation="Vertical" BackgroundColor="#FFFFFF">
+                <Label Style="{StaticResource ContactTitleStyle}"
+                       TextColor="#072669" Text="{utils:Text Contact_ContactLabel}"
+                       HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Margin="0,20,0,11">
+
+                    <StackLayout Margin="0,20" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Vertical"  Margin="0,0,50,0">
+
+                            <ImageButton  Source="icmailcircle"
+
+                                          Command="{Binding MailRedirectCommand}"
+                                          Style="{StaticResource ContactImageButtonStyle}"/>
+                            <Label Margin="0,5,0,0"
+                                   Style="{StaticResource ContactDarkLabelStyle}"
+                                   Text="{utils:Text Contact_MailLabel}"
+                                   HorizontalOptions="CenterAndExpand"/>
+
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical"  Margin="0,0,50,0" >
+
+                            <ImageButton  Source="iccallcircle"
+
+                                          Command="{Binding CallRedirectCommand}"
+                                          Style="{StaticResource ContactImageButtonStyle}"/>
+                            <Label Margin="0,5"
+                                   Style="{StaticResource ContactDarkLabelStyle}"
+                                   Text="{utils:Text Contact_CallLabel}"
+                                   HorizontalOptions="CenterAndExpand"/>
+
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+
+                            <ImageButton  Source="icpincircle"
+
+                                          Command="{Binding LocationRedirectCommand}"
+                                          Style="{StaticResource ContactImageButtonStyle}"/>
+                            <Label Margin="0,5"
+                                   Style="{StaticResource ContactDarkLabelStyle}"
+                                   Text="{utils:Text Contact_LocationLabel}"
+                                   HorizontalOptions="CenterAndExpand"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
+                    <StackLayout Margin="0,20" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Vertical" Margin="0,0,20,0">
+
+                            <ImageButton  Source="iccompensationcircle"
+
+                                          Command="{Binding CompensationCallRedirectCommand}"
+                                          Style="{StaticResource ContactImageButtonStyle}"/>
+                            <Label Margin="0,5,0,0"
+                                   Style="{StaticResource ContactDarkLabelStyle}"
+                                   Text="{utils:Text Contact_CompesationLabel}"
+                                   HorizontalOptions="CenterAndExpand"/>
+
+
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical" Margin="{OnPlatform Android='0,0,36,0', iOS='0,0,28,0'}">
+
+                            <ImageButton  Source="iccustomerservicecircle"
+
+                                          Command="{Binding ServiceClientMailRedirectCommand}"
+                                          Style="{StaticResource ContactImageButtonStyle}"/>
+                            <Label Margin="0,5"
+                                   Style="{StaticResource ContactDarkLabelStyle}"
+                                   Text="{utils:Text Contact_CustomerServiceLabel}"
+                                   HorizontalOptions="CenterAndExpand"/>
+
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical" >
+
+                            <ImageButton  Source="iccomptrollercircle"
+
+                                          Command="{Binding ComptrollerHTMLPageCommand}"
+                                          Style="{StaticResource ContactImageButtonStyle}"/>
+                            <Label Margin="0,5"
+                                   Style="{StaticResource ContactDarkLabelStyle}"
+                                  Text="{utils:Text Contact_ComptrollerLabel}" 
+                                   HorizontalOptions="CenterAndExpand"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </StackLayout>
+                <StackLayout Margin="{OnPlatform Android='32,0,32,55', iOS='32,0,32,55'}" VerticalOptions="EndAndExpand">
+                    <Label  Style="{StaticResource ContactDarkLabelStyle}" Text="{utils:Text Contact_SocialNetworksLabel}"
+                            Margin="0,5,0,10"
+                            HorizontalOptions="CenterAndExpand"/>
+                    <StackLayout  Orientation="Horizontal" 
+                                  Margin="0,5,0,0" HorizontalOptions="CenterAndExpand">
+                        <Image  Source="icfb"
+                                      WidthRequest="25"
+                                      HeightRequest="25"
+                                 IsVisible="{Binding ShowFB}" Margin="0,0,16,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding FacebookRedirectCommand}">
+
+
+                                </TapGestureRecognizer>
+
+                            </Image.GestureRecognizers>
+
+                        </Image>
+                        <Image  Source="ictw"
+                                      WidthRequest="25"
+                                      HeightRequest="25"
+                                 IsVisible="{Binding ShowFB}" Margin="0,0,16,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding TwitterRedirectCommand}">
+
+
+                                </TapGestureRecognizer>
+
+                            </Image.GestureRecognizers>
+
+                        </Image>
+                        <Image  Source="icin"
+                                      WidthRequest="25"
+                                      HeightRequest="25"
+                                 IsVisible="{Binding ShowFB}" Margin="0,0,16,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding InstagramRedirectCommand}">
+
+
+                                </TapGestureRecognizer>
+
+                            </Image.GestureRecognizers>
+
+                        </Image>
+                        <Image  Source="icti"
+                                      WidthRequest="25"
+                                      HeightRequest="25"
+                                 IsVisible="{Binding ShowFB}" Margin="0,0,16,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding TiktokRedirectCommand}">
+
+
+                                </TapGestureRecognizer>
+
+                            </Image.GestureRecognizers>
+
+                        </Image>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

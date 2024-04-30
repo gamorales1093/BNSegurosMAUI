@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls">
+
+    <Style TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+    </Style>
+
+    <Style TargetType="IndicatorView">
+        <Setter Property="IndicatorColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}"/>
+        <Setter Property="SelectedIndicatorColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}"/>
+    </Style>
+
+    <Style TargetType="Border">
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+        <Setter Property="StrokeShape" Value="Rectangle"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+    </Style>
+
+    <Style TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver" />
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="DatePicker">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Editor">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Frame">
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+        <Setter Property="CornerRadius" Value="8" />
+    </Style>
+
+    <Style TargetType="ImageButton">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="BorderColor" Value="Transparent"/>
+        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.5" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver" />
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Span">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="Headline">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+        <Setter Property="FontSize" Value="32" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="SubHeadline">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="ListView">
+        <Setter Property="SeparatorColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+        <Setter Property="RefreshControlColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+    </Style>
+
+    <Style TargetType="Picker">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="TitleColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                            <Setter Property="TitleColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="ProgressColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="RadioButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="RefreshView">
+        <Setter Property="RefreshColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+    </Style>
+
+    <Style x:Key="SearchDefault" TargetType="SearchBar">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray500}" />
+        <Setter Property="CancelButtonColor" Value="{StaticResource Gray500}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                            <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="SearchHandler">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray500}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                            <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Shadow">
+        <Setter Property="Radius" Value="15" />
+        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="Brush" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
+        <Setter Property="Offset" Value="10,10" />
+    </Style>
+
+    <Style TargetType="Slider">
+        <Setter Property="MinimumTrackColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="MaximumTrackColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+        <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="MinimumTrackColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"/>
+                            <Setter Property="MaximumTrackColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"/>
+                            <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="SwipeItem">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+    </Style>
+
+    <Style TargetType="Switch">
+        <Setter Property="OnColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="ThumbColor" Value="{StaticResource White}" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="OnColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                            <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="On">
+                        <VisualState.Setters>
+                            <Setter Property="OnColor" Value="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Gray200}}" />
+                            <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Off">
+                        <VisualState.Setters>
+                            <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TimePicker">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Page" ApplyToDerivedTypes="True">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
+    </Style>
+
+    <Style TargetType="Shell" ApplyToDerivedTypes="True">
+        <Setter Property="Shell.FlowDirection" Value="RightToLeft" />
+        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource OffBlack}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default={StaticResource White}}" />
+        <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />
+        <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+        <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
+        <Setter Property="Shell.NavBarHasShadow" Value="False" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+        <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
+        <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
+        <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+    </Style>
+
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
+        <Setter Property="IconColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
+    </Style>
+
+    <Style TargetType="TabbedPage">
+        <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" />
+        <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
+        <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+        <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+    </Style>
+
+
+    <!-- ****************************** STYLE LIST ****************************** -->
+    <!-- GENERAL -->
+    <Style x:Key="MainBigButtonStyle" TargetType="Button">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="WidthRequest" Value="305" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="BackgroundColor" Value="{StaticResource HomeImageButtonTextColor}" />
+        <Setter Property="TextColor" Value="{StaticResource MainBigButtonTextColor}" />
+    </Style>
+    <Style TargetType="Button" x:Key="MainMediumButtonStyle" ApplyToDerivedTypes="True" >
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="CornerRadius" Value="7" />
+        <Setter Property="WidthRequest" Value="160" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="BackgroundColor" Value="{StaticResource MainMediumButtonColor}" />
+        <Setter Property="TextColor" Value="{StaticResource HomeImageButtonTextColor}" />
+    </Style>
+    <Style x:Key="MainMediumButtonStyleBlue" TargetType="Button">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="CornerRadius" Value="7" />
+        <Setter Property="WidthRequest" Value="160" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="BackgroundColor" Value="{StaticResource HomeImageButtonTextColor}" />
+        <Setter Property="TextColor" Value="{StaticResource MainSmallButtonTextColor}" />
+    </Style>
+    <Style x:Key="MainSmallButtonStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="WidthRequest" Value="200" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="BackgroundColor" Value="{StaticResource MainSmallButtonBackgroundColor}" />
+        <Setter Property="TextColor" Value="{StaticResource MainSmallButtonTextColor}" />
+    </Style>
+    <Style x:Key="PageHeading1Style" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource HomePageBackgroundColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+    </Style>
+    <Style x:Key="PageHeading2Style" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource PageHeading2Color}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+    </Style>
+    <Style x:Key="PageHeading3Style" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource PageHeading3Color}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+    </Style>
+    <Style x:Key="PageParagraphStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="LineHeight" Value="1.1"/>
+        <Setter Property="TextColor" Value="{StaticResource PageParagraphColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+    </Style>
+    <Style x:Key="PageParagraphStyleTipNotice" TargetType="Label">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="LineHeight" Value="1.1"/>
+        <Setter Property="TextColor" Value="{StaticResource PageParagraphColorTipsNotices}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+    </Style>
+
+    <!-- HOME -->
+    <Style x:Key="ActiveIndicator" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#AFBC24" />
+        <Setter Property="Scale" Value="{OnPlatform Android=0.5, Default =1}"/>
+    </Style>
+    <Style x:Key="InactiveIndicator" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#FFFFFF" />
+        <Setter Property="BorderColor" Value="#FFFFFF" />
+        <Setter Property="Scale" Value="{OnPlatform Android=0.5, Default =1}"/>
+    </Style>
+    <Style x:Key="OnlineActiveIndicator" TargetType="Frame">
+        <Setter Property="Padding" Value="150" />
+        <Setter Property="Scale" Value="{OnPlatform Android=0.5, Default =1}"/>
+
+        <Setter Property="BorderColor" Value="#AFBC24" />
+        <Setter Property="BackgroundColor" Value="#AFBC24" />
+    </Style>
+    <Style x:Key="OnlineInactiveIndicator" TargetType="Frame">
+        <Setter Property="Padding" Value="150" />
+        <Setter Property="Scale" Value="{OnPlatform Android=0.5, Default =1}"/>
+        <Setter Property="BorderColor" Value="#AFBC24" />
+        <Setter Property="BackgroundColor" Value="#FFFFFF" />
+    </Style>
+    <Style x:Key="HomeImageButtonTextStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{DynamicResource HomeImageButtonTextColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="HomeButtonTextStyle" TargetType="Button">
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{StaticResource HomeImageButtonTextColor}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+
+    <!-- FOOTER -->
+    <Style x:Key="FooterContainerStyle" TargetType="StackLayout">
+        <Setter Property="HeightRequest" Value="70" />
+        <Setter Property="BackgroundColor" Value="{StaticResource FooterBackgroundColor}" />
+    </Style>
+
+    <!-- FREQUENT QUESTIONS -->
+    <Style x:Key="FrequentQuestionsTitleStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource RequestInsurancePageTittle}" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="WidthRequest" Value="300" />
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="Margin" Value="22,21,0,0" />
+    </Style>
+    <Style x:Key="ItemCellFrameStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource ItemCellBackgroundColor}" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BorderColor" Value="#dcdcdc"></Setter>
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style x:Key="ItemCellTitleLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="TextColor" Value="{StaticResource HomeImageButtonTextColor}" />
+    </Style>
+    <Style x:Key="ItemSubCellTitleLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+         <Setter Property="MaxLines" Value="3" />
+         <Setter Property="LineBreakMode" Value="WordWrap" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="TextColor" Value="{StaticResource HomeImageButtonTextColor}" />
+    </Style>
+    <Style x:Key="ItemCellAnswerFrameStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource ItemAnswerCellBackgroundColor}" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style x:Key="ItemCellAnswerLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="TextColor" Value="{StaticResource PageParagraphColorTipsNotices}" />
+    </Style>
+    <Style x:Key="ItemCellAditionalInfoLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="WidthRequest" Value="265" />
+        <Setter Property="TextColor" Value="{StaticResource DarkGrayTextColor}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+    <Style x:Key="ItemInsuranceButtonStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="FontFamily" Value="SansSerifMedium"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource BlueTextColor}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+    <Style x:Key="FrequentQuestionsListEmptyStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource ListEmptyTextColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="WidthRequest" Value="278" />
+        <Setter Property="Margin" Value="45,20,33,188" />
+    </Style>
+
+    <!-- SEARCH BAR -->
+    <Style x:Key="SearchBarStyle" TargetType="SearchBar">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource SearchTextColor}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource LightTextColor}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="IsSpellCheckEnabled" Value="False" />
+        <Setter Property="Keyboard" Value="Text" />
+    </Style>
+    <!-- SEARCH BAR -->
+    <Style x:Key="CustomSearchBarStyle" TargetType="controls:CustomSearchBar" BasedOn="{StaticResource SearchBarStyle}">
+        <Setter Property="ShowCancelButton" Value="False" />
+        <Setter Property="BorderColor" Value="{StaticResource EntryBorderColor}" />
+        <Setter Property="BorderWidth" Value="1" />
+    </Style>
+
+    <!-- INSURANCES COLLECTIONVIEW -->
+    <Style x:Key="InsuranceItemImageStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource InsuranceItemImageBackgroundColor}" />
+        <Setter Property="HeightRequest" Value="90" />
+        <Setter Property="WidthRequest" Value="60" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HasShadow" Value="false" />
+    </Style>
+    <Style x:Key="InsuranceItemTitleStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource InsuranceItemTitleBackgroundColor}" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HasShadow" Value="false" />
+        <Setter Property="Padding" Value="10,0,0,0" />
+    </Style>
+    <Style x:Key="InsuranceItemTextStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource InsuranceItemTextColor}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!-- REQUEST INSURANCE -->
+    <Style x:Key="FormTitleStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource RequestInsurancePageTittle}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+    <Style x:Key="FormInputLabelStyle" TargetType="Label">
+        <Setter Property="Margin" Value="0,10,0,0" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource PageParagraphColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+    <Style x:Key="MainEntryStyle" TargetType="controls:MainEntry">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource LightInputTextColor}" />
+        <Setter Property="EntryBackgroundColor" Value="{StaticResource EntryInputBackgroundColor}" />
+        <Setter Property="IsSpellCheckEnabled" Value="False" />
+        <Setter Property="IsTextPredictionEnabled" Value="False" />
+        <Setter Property="BorderColor" Value="{StaticResource EntryInputBorderColor}" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="LeftPadding" Value="10" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+    <Style x:Key="MainDatePickerStyle" TargetType="controls:MainDatePicker">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource LightInputTextColor}" />
+        <Setter Property="EntryBackgroundColor" Value="{StaticResource EntryInputBackgroundColor}" />
+        <Setter Property="BorderColor" Value="{StaticResource EntryInputBorderColor}" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="LeftPadding" Value="10" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+    <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="Color" Value="{StaticResource CheckBoxColor}" />
+    </Style>
+    <Style x:Key="TermsAndConditionsStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{StaticResource RequestInsurancePageTittle}" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+    <Style x:Key="RequestInsuranceButtonStyle" TargetType="Button">
+        <Setter Property="CornerRadius" Value="7" />
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="WidthRequest" Value="280" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList x:Name="CommonStates">
+                <VisualStateGroup>
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource RequestInsurancePageTittle}" />
+                            <Setter Property="TextColor" Value="{StaticResource MainMediumButtonTextColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource MainMediumButtonDisabledBackgroundColor}" />
+                            <Setter Property="TextColor" Value="{StaticResource MainMediumButtonDisableTextColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    <!-- DROP DOWN -->
+    <Style x:Key="DropdownFrameStyle" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderColor" Value="{StaticResource EntryInputBorderColor}" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+    <Style x:Key="DropdownItemStyle" TargetType="Label">
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Start" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="Margin" Value="0,2" />
+        <Setter Property="WidthRequest" Value="240" />
+        <Setter Property="TextColor" Value="{StaticResource LightInputTextColor}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+    <Style x:Key="DropdownHeaderStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource LightInputTextColor}" />
+        <Setter Property="Padding" Value="20,0" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        <Setter Property="MinimumWidthRequest" Value="240" />
+        <Setter Property="MinimumHeightRequest" Value="45" />
+    </Style>
+    <Style x:Key="DropdownRepeaterViewStyle" TargetType="controls:RepeaterView">
+        <Setter Property="Padding" Value="20,0,0,12" />
+        <Setter Property="IsVisible" Value="False" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+    </Style>
+    <Style x:Key="DropdownStackLayoutStyle" TargetType="StackLayout">
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+    <Style x:Key="DropdownStyle" TargetType="controls:DropDown">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="Start" />
+    </Style>
+
+    <!-- CONTACT -->
+    <Style x:Key="ContactTitleStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource PageHeading1Color}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+    </Style>
+    <Style x:Key="ContactDarkLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource ContactDarkTextColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+    </Style>
+    <Style x:Key="ContactLightLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource ContactLightTextColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+    </Style>
+    <Style x:Key="ContactImageButtonStyle" TargetType="ImageButton">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="WidthRequest" Value="60" />
+    </Style>
+
+        <Style x:Key="ContactImageButtonSocialStyle" TargetType="ImageButton">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="HeightRequest" Value="10" />
+        <Setter Property="WidthRequest" Value="10" />
+    </Style>
+    <Style x:Key="ContactCircleImageFrameStyle" TargetType="Frame">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="WidthRequest" Value="48" />
+        <Setter Property="CornerRadius" Value="24" />
+        <Setter Property="BorderColor" Value="Transparent"></Setter>
+        <Setter Property="Padding" Value="0" />
+    </Style>
+    <Style x:Key="ContactItemCellInfoLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="HeightRequest" Value="19" />
+        <Setter Property="WidthRequest" Value="292" />
+        <Setter Property="TextColor" Value="{StaticResource LightGrayTextColor}" />
+    </Style>
+    <Style x:Key="ContactItemCellNameLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="sans-serif-medium" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="TextColor" Value="{StaticResource HyperLinkColorDescription}" />
+    </Style>
+    <Style x:Key="ContactAssistantLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="sans-serif-medium" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+    </Style>
+    <Style x:Key="ContactAssistantTypeLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="sans-serif-medium" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="TextColor" Value="{StaticResource ContactDarkTextColor}" />
+    </Style>
+    <Style x:Key="ContactAssistantNumberLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="sans-serif-medium" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="TextColor" Value="{StaticResource LightGrayTextColor}" />
+    </Style>
+    <Style x:Key="ContactAssistantDetailLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="sans-serif-medium" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="TextColor" Value="{StaticResource LightGrayTextColor}" />
+    </Style>
+
+    <!-- ALERTS -->
+    <Style x:Key="AlertFrameStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Padding" Value="8" />
+    </Style>
+    <Style x:Key="AlertTitleLabelStyle" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="sans-serif-medium" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="TextColor" Value="{StaticResource ErrorTitleColor}" />
+    </Style>
+    <Style x:Key="AlertMessageLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="TextColor" Value="{StaticResource PageParagraphColor}" />
+        <Setter Property="MaxLines" Value="4" />
+        <Setter Property="LineBreakMode" Value="TailTruncation" />
+    </Style>
+    <Style x:Key="AlertButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource HomeImageButtonTextColor}" />
+        <Setter Property="TextColor" Value="{StaticResource MainBigButtonTextColor}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="WidthRequest" Value="130" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="CornerRadius" Value="7"/>
+    </Style>
+    <Style x:Key="AlertConfirmButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource HomeImageButtonTextColor}" />
+        <Setter Property="TextColor" Value="{StaticResource MainBigButtonTextColor }" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="WidthRequest" Value="96" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Style.Triggers>
+            <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonDisabledTextColor}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="AlertCancelButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource HomeImageButtonTextColor}" />
+        <Setter Property="TextColor" Value="{StaticResource MainBigButtonTextColor}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="WidthRequest" Value="96" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+    </Style>
+    <Style x:Key="AlertMaskStyle" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{StaticResource AlertMaskColor}" />
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+    <Style x:Key="AlertTitleDeleteLabelStyle" TargetType="Label"
+                   BasedOn="{StaticResource AlertTitleLabelStyle}">
+        <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+    </Style>
+
+    <!-- INSURANCE QUOTE -->
+    <Style x:Key="InsuranceQuoteTitleLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource PageHeading1Color}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+    </Style>
+    <Style x:Key="SendQuoteItemCellFrameStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource ItemCellBackgroundColor}" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList x:Name="CommonStates">
+                <VisualStateGroup>
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource ItemCellBackgroundColorSelected}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    <Style x:Key="InsuranceQuoteItemTitleLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+    </Style>
+    <Style x:Key="InsuranceQuoteItemSubtitleLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource SubTitleTextColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+    </Style>
+    <Style x:Key="InsuranceQuoteItemDetailTitleLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource SubTitleTextColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+    </Style>
+    <Style x:Key="InsuranceQuoteItemDetailBodyLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource LightGrayTextColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="AvenirBook"></Setter>
+        <Setter Property="WidthRequest" Value="273" />
+    </Style>
+    <Style x:Key="InsuranceQuoteButtonStyle" TargetType="Button">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+        <Setter Property="WidthRequest" Value="280" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="CornerRadius" Value="7"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList x:Name="CommonStates">
+                <VisualStateGroup>
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource RequestInsurancePageTittle}" />
+                            <Setter Property="TextColor" Value="{StaticResource MainMediumButtonTextColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource MainMediumButtonDisabledBackgroundColor}" />
+                            <Setter Property="TextColor" Value="{StaticResource MainMediumButtonDisableTextColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    <Style x:Key="InsuranceQuoteFooterTitleLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource QuoteFooterTitleColor}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+    </Style>
+    <Style x:Key="InsuranceQuoteFooterDetailLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource SubTitleTextColor}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+    </Style>
+    <Style x:Key="InsuranceQuoteFooterImageStyle" TargetType="Image">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="WidthRequest" Value="17" />
+        <Setter Property="HeightRequest" Value="17" />
+    </Style>
+    <Style x:Key="InsuranceQuoteRequiredDataLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource ErrorTitleColor}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Margin" Value="17" />
+        <Setter Property="FontFamily" Value="AvenirBookBold"></Setter>
+    </Style>
+
+</ResourceDictionary>
+

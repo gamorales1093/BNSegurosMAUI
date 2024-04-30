@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"
+      xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls"
+      x:Class="BNSegurosMAUI.Views.Controls.DropDown"
+      x:Name="RootItem">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Frame x:Name="framestack" Style="{StaticResource DropdownFrameStyle}" BorderColor="{Binding BorderColor,Source={x:Reference RootItem}}">
+        <StackLayout>
+            <Frame Style="{StaticResource DropdownFrameStyle}">
+                <StackLayout Style="{StaticResource DropdownStackLayoutStyle}">
+                    <Label Text="{Binding HeaderText,Source={x:Reference RootItem}}" Style="{StaticResource DropdownHeaderStyle}"/>
+                    <Image x:Name="headerImage" Margin="0,0,10,0" Source="icchevronbig" HeightRequest="30" WidthRequest="30" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="HeaderTapGestureRecognizerTapped" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Frame>
+            <controls:RepeaterView x:Name="BottomStack" Style="{StaticResource DropdownRepeaterViewStyle}" ItemsSource="{Binding ListSource,Source={x:Reference RootItem}}">
+                <controls:RepeaterView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" Style="{StaticResource DropdownItemStyle}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ItemTapGestureRecognizerTapped" NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:RepeaterView.ItemTemplate>
+            </controls:RepeaterView>
+        </StackLayout>
+    </Frame>
+</Grid>

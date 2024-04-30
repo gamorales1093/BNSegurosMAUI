@@ -1,0 +1,20 @@
+﻿<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="BNSegurosMAUI.Views.Dialogs.AlertPopup"
+               Color="Transparent">
+
+    <Grid VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="20" Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Image Margin="0,15,0,15" Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" />
+        <Label Margin="0,0,0,10" Style="{StaticResource AlertTitleLabelStyle}" TextColor="{StaticResource BlueTextColor}" Text="{Binding Title}" Grid.Row="1"  LineBreakMode="WordWrap" MaxLines="2"/>
+        <Label Style="{StaticResource AlertMessageLabelStyle}" Text="{Binding Message}" Margin="15,0,15,15" Grid.Row="2" LineBreakMode="WordWrap" MaxLines="2" />
+        <Button Margin="0,0,0,15" Style="{StaticResource AlertButtonStyle}" Text="{Binding AcceptButton}" Command="{Binding AcceptCommand}" HorizontalOptions="Center" Grid.Row="3" />
+    </Grid>
+
+</toolkit:Popup>

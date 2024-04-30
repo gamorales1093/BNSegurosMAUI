@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"             
+             xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls"
+             xmlns:effects="clr-namespace:BNSegurosMAUI.Effects"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models1="clr-namespace:BNSegurosMAUI.Models"
+             xmlns:viewModles="clr-namespace:BNSegurosMAUI.ViewModels"
+             xmlns:data="clr-namespace:Syncfusion.Maui.DataSource;assembly=Syncfusion.Maui.DataSource"
+             xmlns:handlers="clr-namespace:BNSegurosMAUI.Handlers"
+             prism:ViewModelLocator.AutowireViewModel="Automatic"
+             x:Class="BNSegurosMAUI.Views.ContactAgentListPage"
+             BackgroundColor="{x:StaticResource PageBackgroundColor}"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="0,-5,0,0" Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}"  BackgroundColor="#23387A">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn.png" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button HeightRequest="30"
+                            WidthRequest="30"
+                            AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"
+                       FontFamily="AvenirBookBold"
+                       FontAttributes="Bold" FontSize="{OnPlatform Android='20', iOS='18'}" Text="Contacto" Margin="0,0,0,0" HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}" VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+
+
+            <!--   <CollectionView VerticalOptions="FillAndExpand" Grid.Row="1"
+                        IsGrouped="True" 
+                        ItemsSource="{Binding Employees, Mode=Default}">
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="models1:EmployeeGroup">
+                    <HorizontalStackLayout Spacing="5">
+                        <Image Source="{Binding GroupIcon}" VerticalOptions="Center" HeightRequest="20" WidthRequest="20" />
+                        <Label Text="{Binding GroupTitle}" FontSize="28" />
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModles:ContactAgentListPageViewModel}},Path=AddOrRemoveGroupDataCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models1:Agent">
+                    <VerticalStackLayout Margin="0,5,0,5">
+                        <Frame Padding="10" >
+                            <Label VerticalTextAlignment="Center" Text="{Binding FullName}" FontSize="18" />
+                        </Frame>
+                    </VerticalStackLayout>
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+                 <controls:CustomCollectionView x:Name="ItemList" Grid.Row="1" ItemsSource="{Binding DisplayedItems}" ItemTemplate="{StaticResource ItemRowTemplate}" SelectionMode="Single" SelectionChanged="SelectionChanged" ItemSizingStrategy="MeasureAllItems" ItemsUpdatingScrollMode="KeepScrollOffset" Margin="0,24,0,0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+            </controls:CustomCollectionView>-->
+
+            <ScrollView Grid.Row="1">
+                <controls:CustomCollectionView  x:Name="ItemList" ItemsSource="{Binding DisplayedItems}" ItemTemplate="{StaticResource ItemRowTemplate}" SelectionMode="Single" SelectionChanged="SelectionChanged" ItemSizingStrategy="MeasureAllItems" ItemsUpdatingScrollMode="KeepScrollOffset" Margin="0,24,0,0">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                </controls:CustomCollectionView>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ItemRowTemplate">
+                <handlers:FixedScrollview >
+                    <Frame Style="{StaticResource ItemCellFrameStyle}" HeightRequest="{Binding HeightValue}">
+                        <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,20,0,21">
+                                <StackLayout Margin="32,0,0,0">
+                                    <Frame Style="{StaticResource ContactCircleImageFrameStyle}" HasShadow="False" IsClippedToBounds="True">
+                                        <ffimage:CachedImage Source="{Binding Image}" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                </StackLayout>
+
+                                <Grid 
+                                                                                 HorizontalOptions="FillAndExpand"
+                                                                                
+                                                                                 VerticalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+
+                                        <ColumnDefinition Width="70"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+                                <Label Style="{StaticResource ContactItemCellNameLabelStyle}" Grid.Column="0"
+                                       Text="{Binding FullName}"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Margin="10,0,0,0" LineBreakMode="WordWrap"
+                                       MaxLines="2"/>
+                                <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,0,32,0">
+                                    <ImageButton WidthRequest="35" HeightRequest="35" Source="{Binding IsCellExpanded,Converter={StaticResource ExpandableIndicatorImageConverter},ConverterParameter=1}" Command="{Binding BindingContext.FirstItemCommand, Source={x:Reference ItemList}}" CommandParameter="{Binding .}" BackgroundColor="Transparent"/>
+                                </StackLayout>
+                                </Grid>
+
+
+
+                            </StackLayout>
+                            <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding IsCellExpanded}" HorizontalOptions="FillAndExpand" Margin="90,0,0,10" Spacing="20">
+                                <Label Style="{StaticResource ContactItemCellInfoLabelStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{utils:Text Contact_PhoneNumberLabel}" TextColor="{StaticResource HyperLinkColor}"/>
+                                            <Span Text="{Binding MobilePhone}" TextColor="{StaticResource HyperLinkColor}">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding MobilePhone}" Command="{Binding BindingContext.CallRedirectCommand, Source={x:Reference ItemList}}"/>
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource ContactItemCellInfoLabelStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{utils:Text Contact_OficeNumberLabel}" TextColor="{StaticResource HyperLinkColor}"/>
+                                            <Span Text="{Binding OfficePhone}" TextColor="{StaticResource HyperLinkColor}">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding OfficePhone}" Command="{Binding BindingContext.CallRedirectCommand, Source={x:Reference ItemList}}"/>
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource ContactItemCellInfoLabelStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{utils:Text Contact_AssistantNumberLabel}" TextColor="{StaticResource HyperLinkColor}"/>
+                                            <Span Text="{Binding AssistantPhone}" TextColor="{StaticResource HyperLinkColor}">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding AssistantPhone}" Command="{Binding BindingContext.CallRedirectCommand, Source={x:Reference ItemList}}"/>
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource ContactItemCellInfoLabelStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{utils:Text Contact_SecondMailLabel}" TextColor="{StaticResource HyperLinkColor}"/>
+                                            <Span Text="{Binding Email}" TextColor="{StaticResource HyperLinkColor}">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding Email}" Command="{Binding BindingContext.MailRedirectCommand, Source={x:Reference ItemList}}"/>
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource ContactItemCellInfoLabelStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{utils:Text Contact_ZoneLabel}" TextColor="{StaticResource HyperLinkColor}"/>
+                                            <Span Text="{Binding AttentionZone}" TextColor="{StaticResource HyperLinkColor}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource ContactItemCellInfoLabelStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Style="{StaticResource ContactItemCellInfoLabelStyle}" Text="{utils:Text Contact_LicenseLabel}" TextColor="{StaticResource HyperLinkColor}"/>
+                                            <Span Text="{Binding License}" TextColor="{StaticResource HyperLinkColor}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                        <Frame.Effects>
+                            <effects:ShadowEffect Radius="{OnPlatform Android='2',iOS='0.5'}" Color="Gray" />
+                        </Frame.Effects>
+                    </Frame>
+                </handlers:FixedScrollview>
+
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

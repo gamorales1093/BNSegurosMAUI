@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"             
+             xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls"
+             xmlns:effects="clr-namespace:BNSegurosMAUI.Effects"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" xmlns:handlers="clr-namespace:BNSegurosMAUI.Handlers"
+             prism:ViewModelLocator.AutowireViewModel="Automatic"
+             x:Class="BNSegurosMAUI.Views.CotizeInsurancePage"
+             BackgroundColor="{x:StaticResource PageBackgroundColor}"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}"  BackgroundColor="#23387A" Grid.Row="0" Margin="0,-5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button HeightRequest="30" WidthRequest="30" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"
+                       FontAttributes="Bold"
+                       FontSize="{OnPlatform Android='20', iOS='18'}"
+                       FontFamily="AvenirBookBold"
+                       Text="{Binding Title}" Margin="0,0,0,0"
+                       HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}" VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#FFFFFF">
+                    <Label Style="{StaticResource InsuranceQuoteTitleLabelStyle}" Margin="32,24,0,18" Padding="0,0,0,10" Text="{utils:Text InsuranceQuote_TitleLabel}"/>
+                    <BoxView HorizontalOptions="Fill" HeightRequest="1" Color="#E7E7E7" />
+                    <CollectionView x:Name="ItemList" ItemsSource="{Binding InsuranceQuotes}" ItemTemplate="{StaticResource ItemRowTemplate}" SelectionMode="None" ItemSizingStrategy="MeasureAllItems" ItemsUpdatingScrollMode="KeepScrollOffset" HeightRequest="420">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
+
+                    <Button Command="{Binding SendInsuranceQuoteCommand}" Text="{utils:Text InsuranceQuote_SendButtonText}" Style="{StaticResource InsuranceQuoteButtonStyle}" Margin="55,33,55,36"/>
+
+                    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,26">
+                        <Label Style="{StaticResource InsuranceQuoteFooterTitleLabelStyle}" Text="{utils:Text InsuranceQuote_FooterText}" HorizontalOptions="Center"/>
+
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Style="{StaticResource InsuranceQuoteFooterImageStyle}" Source="icmailsmall" Grid.Column="0" Grid.Row="0"/>
+                            <Label Style="{StaticResource InsuranceQuoteFooterDetailLabelStyle}" Text="{Binding Mail}"  Grid.Column="1" Grid.Row="0"/>
+                            <Image Style="{StaticResource InsuranceQuoteFooterImageStyle}" Source="icphonesmall" Grid.Column="0" Grid.Row="1"/>
+                            <Label Style="{StaticResource InsuranceQuoteFooterDetailLabelStyle}" Text="{Binding PhoneNumber}" Grid.Column="1" Grid.Row="1"/>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ItemRowTemplate">
+                <Frame Style="{StaticResource SendQuoteItemCellFrameStyle}">
+                    <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding BackGroundColor}">
+                        <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,13,0,12">
+                            <StackLayout Margin="32,0,0,0" Orientation="Vertical" BackgroundColor="{Binding BackGroundColor}">
+                                <Label Style="{StaticResource InsuranceQuoteItemTitleLabelStyle}" Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,0,0,0" />
+                                <Label Style="{StaticResource InsuranceQuoteItemSubtitleLabelStyle}" Text="{Binding FormattedAmount}" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,4,0,8" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,0,32,0" BackgroundColor="{Binding BackGroundColor}">
+                                <ImageButton WidthRequest="35" HeightRequest="35" Source="{Binding IsCellExpanded,Converter={StaticResource ExpandableIndicatorImageConverter},ConverterParameter=1}" Command="{Binding BindingContext.FirstItemCommand, Source={x:Reference ItemList}}" CommandParameter="{Binding .}" BackgroundColor="Transparent"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding IsCellExpanded}" HorizontalOptions="FillAndExpand" Margin="32,0,0,13" BackgroundColor="{Binding BackGroundColor}">
+                            <handlers:JustifiedLabel JustifyText="False" TextType="Text"  Style="{StaticResource InsuranceQuoteItemDetailTitleLabelStyle}" Text="{utils:Text InsuranceQuote_BenefitLabel}" Margin="0,8,0,4"/>
+                            <handlers:JustifiedLabel JustifyText="False" TextType="Text"   Style="{StaticResource InsuranceQuoteItemDetailBodyLabelStyle}" Text="{Binding Benefits}" Margin="0,0,56,8"/>
+                            <handlers:JustifiedLabel JustifyText="False" TextType="Text"  Style="{StaticResource InsuranceQuoteItemDetailTitleLabelStyle}" Text="{utils:Text InsuranceQuote_TermsLabel}" Margin="0,0,0,4"/>
+                            <handlers:JustifiedLabel JustifyText="False" TextType="Text"  Style="{StaticResource InsuranceQuoteItemDetailBodyLabelStyle}" Text="{Binding Terms}" Margin="0,0,56,0"/>
+                        </StackLayout>
+                        <BoxView HorizontalOptions="Fill" HeightRequest="1" Color="#E7E7E7" />
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

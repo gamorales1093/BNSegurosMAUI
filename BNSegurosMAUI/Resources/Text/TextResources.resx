@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+
+    <!-- FORMATTING -->
+    <data name="CurrentCulture" xml:space="preserve">
+        <value>es</value>
+        <comment>Cultura por defecto del idioma de este archivo. (español = es)</comment>
+    </data>
+
+    <!-- BASIC -->
+    <data name="AlertAcceptButton" xml:space="preserve">
+        <value>ACEPTAR</value>
+        <comment></comment>
+    </data>
+    <data name="AlertCancelButton" xml:space="preserve">
+        <value>CANCELAR</value>
+        <comment></comment>
+    </data>
+    <data name="AlertErrorTitle" xml:space="preserve">
+        <value>Error</value>
+        <comment></comment>
+    </data>
+    <data name="AlertDefaultTitle" xml:space="preserve">
+        <value>Alerta</value>
+        <comment></comment>
+    </data>
+    <data name="AlertDefaultError" xml:space="preserve">
+        <value>Ocurrió un error inesperado. Por favor, intente de nuevo.</value>
+        <comment></comment>
+    </data>
+    <data name="AlertNoConnectivityTitle" xml:space="preserve">
+        <value>Error de conexión</value>
+        <comment></comment>
+    </data>
+    <data name="AlertNoConnectivity" xml:space="preserve">
+        <value>El dispositivo no se encuentra conectado a Internet.</value>
+        <comment></comment>
+    </data>
+    <data name="Search_EntryPlaceholder" xml:space="preserve">
+        <value>Buscar</value>
+        <comment></comment>
+    </data>
+    <data name="ProgressDialogDefaultLoading" xml:space="preserve">
+        <value>Cargando información</value>
+        <comment></comment>
+    </data>
+
+    <!-- SINISTER -->
+    <data name="AlertSinisterStepsNoInfo" xml:space="preserve">
+        <value>No hay pasos que mostrar en este Siniestro.</value>
+        <comment></comment>
+    </data>
+
+    <!-- GENERAL -->
+    <data name="Notices_TitleLabel" xml:space="preserve">
+        <value>Anuncios</value>
+        <comment></comment>
+    </data>
+    <data name="Insurance_TitleLabel" xml:space="preserve">
+        <value>Seguros</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_TitleLabel" xml:space="preserve">
+        <value>Contacto</value>
+        <comment></comment>
+    </data>
+    <data name="FAQ_TitleLabel" xml:space="preserve">
+        <value>Preguntas frecuentes</value>
+        <comment></comment>
+    </data>
+    <data name="Tip_TitleLabel" xml:space="preserve">
+        <value>Tip de la semana</value>
+        <comment></comment>
+    </data>
+    <data name="ClosePageButton" xml:space="preserve">
+        <value>CERRAR</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceDetail_TitleLabel" xml:space="preserve">
+        <value>Tipo de seguro</value>
+        <comment></comment>
+    </data>
+    <data name="QuoteInsuranceButton" xml:space="preserve">
+        <value>COTIZAR</value>
+        <comment></comment>
+    </data>
+    <data name="Request_ListPlaceholder" xml:space="preserve">
+        <value>Desplegar lista</value>
+        <comment></comment>
+    </data>
+    <data name="OnlineInsurances_TitleLabel" xml:space="preserve">
+        <value>Comprar</value>
+        <comment></comment>
+    </data>
+
+    <!-- HOME -->
+    <data name="Home_ButtonMoreInformation" xml:space="preserve">
+        <value>MÁS INFORMACIÓN</value>
+        <comment></comment>
+    </data>
+    
+    <!-- REQUEST INSURANCE -->
+    <data name="Request_PersonalDataTitle" xml:space="preserve">
+        <value>Datos personales</value>
+        <comment></comment>
+    </data>
+    <data name="Request_SpecificDataTitle" xml:space="preserve">
+        <value>Datos específicos</value>
+        <comment></comment>
+    </data>
+    <data name="Request_AceptTermsAndConditionsLabel" xml:space="preserve">
+        <value>ACEPTO TÉRMINOS Y CONDICIONES</value>
+        <comment></comment>
+    </data>
+    
+    <!-- PERSONAL DATA -->
+    <data name="Request_NameLabel" xml:space="preserve">
+        <value>Nombre</value>
+        <comment></comment>
+    </data>
+    <data name="Request_NamePlaceholder" xml:space="preserve">
+        <value>Nombre</value>
+        <comment></comment>
+    </data>
+     <data name="Request_LastNameLabel" xml:space="preserve">
+        <value>Apellidos</value>
+        <comment></comment>
+    </data>
+    <data name="Request_LastNamePlaceholder" xml:space="preserve">
+        <value>Apellidos</value>
+        <comment></comment>
+    </data>
+    <data name="Request_TypeIdLabel" xml:space="preserve">
+        <value>Tipo de identificación</value>
+        <comment></comment>
+    </data>
+    <data name="Request_IdNumberLabel" xml:space="preserve">
+        <value>Número de identificación</value>
+        <comment></comment>
+    </data>
+    <data name="Request_IdNumberPlaceholder" xml:space="preserve">
+        <value>Número de identificación</value>
+        <comment></comment>
+    </data>
+    <data name="Request_SexGenderLabel" xml:space="preserve">
+        <value>Sexo</value>
+        <comment></comment>
+    </data>
+    <data name="Request_BirthdayLabel" xml:space="preserve">
+        <value>Fecha de nacimiento</value>
+        <comment></comment>
+    </data>
+    <data name="Request_BirthdayPlaceholder" xml:space="preserve">
+        <value>Fecha de nacimiento</value>
+        <comment></comment>
+    </data>
+    <data name="Request_TelephoneLabel" xml:space="preserve">
+        <value>Teléfono</value>
+        <comment></comment>
+    </data>
+    <data name="Request_TelephonePlaceholder" xml:space="preserve">
+        <value>Teléfono</value>
+        <comment></comment>
+    </data>
+    <data name="Request_EmailLabel" xml:space="preserve">
+        <value>Correo</value>
+        <comment></comment>
+    </data>
+    <data name="Request_EmailPlaceholder" xml:space="preserve">
+        <value>Correo</value>
+        <comment></comment>
+    </data>
+    
+    <!-- VALIDATIONS -->
+    <data name="Request_RequiredDataMessage" xml:space="preserve">
+        <value>Datos obligatorios</value>
+        <comment></comment>
+    </data>
+    <data name="Request_ValidFormatDataMessage" xml:space="preserve">
+        <value>Formato no válido</value>
+        <comment></comment>
+    </data>
+    <data name="Request_InvalidNacionalIdDataMessage" xml:space="preserve">
+        <value>Formato válido: 107430246</value>
+        <comment></comment>
+    </data>
+    <data name="Request_InvalidDimexIdDataMessage" xml:space="preserve">
+        <value>Formato válido: 116000586109</value>
+        <comment></comment>
+    </data>
+    <data name="Request_InvalidTelephoneDataMessage" xml:space="preserve">
+        <value>Teléfono debe contener 8 dígitos</value>
+        <comment></comment>
+    </data>
+    <data name="Request_InvaliEmailDataMessage" xml:space="preserve">
+        <value>Formato válido: usuario@ejemplo.com</value>
+        <comment></comment>
+    </data>
+    <data name="Request_InvalidDateMessage" xml:space="preserve">
+        <value>Fecha inválida</value>
+        <comment></comment>
+    </data>
+    <data name="Request_DropDownMessage" xml:space="preserve">
+        <value>Seleccione una opción</value>
+        <comment></comment>
+    </data>
+    <data name="Request_InvalidYearMessage" xml:space="preserve">
+        <value>Antigüedad superior 10 años. Solicite su cotización al WhatsApp 8699-2507</value>
+        <comment></comment>
+    </data>
+    
+    <!-- SPECIFIC DATA -->
+    <data name="Request_MapfreTypeInsuranceLabel" xml:space="preserve">
+        <value>Tipo de plan de seguro</value>
+        <comment></comment>
+    </data>
+    <data name="Request_MapfreHowManyLabel" xml:space="preserve">
+        <value>Cantidad de asegurados</value>
+        <comment></comment>
+    </data>
+    <data name="Request_SagicorTypeCurrencyLabel" xml:space="preserve">
+        <value>Moneda de crédito</value>
+        <comment></comment>
+    </data>
+    <data name="Request_SagicorCreditQuotaLabel" xml:space="preserve">
+        <value>Cuota del crédito</value>
+        <comment></comment>
+    </data>
+    <data name="Request_SagicorCreditQuotaPlaceholder" xml:space="preserve">
+        <value>Cuota del crédito</value>
+        <comment></comment>
+    </data>
+    <data name="Request_OthersTypeInsuranceLabel" xml:space="preserve">
+        <value>Tipo de seguro</value>
+        <comment></comment>
+    </data>
+    <data name="Request_TypeCurrencyLabel" xml:space="preserve">
+        <value>Moneda</value>
+        <comment></comment>
+    </data>
+    <data name="Request_BicycleValueLabel" xml:space="preserve">
+        <value>Valor de la bicicleta</value>
+        <comment></comment>
+    </data>
+    <data name="Request_BicycleYearLabel" xml:space="preserve">
+        <value>Año de la bicicleta</value>
+        <comment></comment>
+    </data>
+    <data name="Request_RequestAccidentBicycleInsuranceLabel" xml:space="preserve">
+        <value>AGREGAR SEGUROS DE ACCIDENTES Y ASISTENCIAS</value>
+        <comment></comment>
+    </data>
+    
+    <!-- CONTACT -->
+    <data name="Contact_BNInsuranceLabel" xml:space="preserve">
+        <value>BN Corredora</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_InsurancesLabel" xml:space="preserve">
+        <value>Corredores</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_InsuranceAsistanceLabel" xml:space="preserve">
+        <value>Asistencia</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_ContactLabel" xml:space="preserve">
+        <value>Contáctenos</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_AddressLabel" xml:space="preserve">
+        <value>Dirección</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_MailLabel" xml:space="preserve">
+        <value>Correo</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_CompesationLabel" xml:space="preserve">
+        <value>Indenmización</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_ComptrollerLabel" xml:space="preserve">
+        <value>Contraloría</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_CustomerServiceLabel" xml:space="preserve">
+        <value>Servicio al cliente</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_PhoneLabel" xml:space="preserve">
+        <value>Teléfono</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_CallLabel" xml:space="preserve">
+        <value>Llamada</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_PhoneMessageLabel" xml:space="preserve">
+        <value>SMS</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_LocationLabel" xml:space="preserve">
+        <value>Ubicación</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_SocialNetworksLabel" xml:space="preserve">
+        <value>Síguenos en nuestras redes sociales</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_CallInvalidErrorTitle" xml:space="preserve">
+        <value>Solicitud de llamada fallida</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_CallInvalidErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! El número teléfonico no es valido.</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_CallSupportPhoneErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! Número telefónico no compatible.</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_CallErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! Llamada telefónica fallida.</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_MailInvalidErrorTitle" xml:space="preserve">
+        <value>Envío de correo fallido</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_MailErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! Envío de correo fallido.</value>
+        <comment></comment>
+    </data> 
+    <data name="Contact_SmsSupportPhoneErrorTitle" xml:space="preserve">
+        <value>Envío de sms fallido</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_SmsSupportPhoneErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! SMS no compatible con el dispositivo.</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_SmsErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! Envío de SMS fallido.</value>
+        <comment></comment>
+    </data>
+    <data name="Contact_SocialMediaErrorTitle" xml:space="preserve">
+        <value>Error al abrir</value>
+        <comment></comment>
+    </data> 
+    <data name="Contact_SocialMediaErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! La aplicación seleccionada no puede ser abierta o no se encuentra instalada en el dispositivo.</value>
+        <comment></comment>
+    </data>     
+    <data name="Contact_PhoneNumberLabel" xml:space="preserve">
+        <value>Teléfono móvil: </value>
+        <comment></comment>
+    </data>     
+    <data name="Contact_OficeNumberLabel" xml:space="preserve">
+        <value>Teléfono oficina: </value>
+        <comment></comment>
+    </data>          
+    <data name="Contact_AssistantNumberLabel" xml:space="preserve">
+        <value>Teléfono asistente: </value>
+        <comment></comment>
+    </data>    
+    <data name="Contact_SecondMailLabel" xml:space="preserve">
+        <value>Correo: </value>
+        <comment></comment>
+    </data> 
+    <data name="Contact_ZoneLabel" xml:space="preserve">
+        <value>Zona de atención: </value>
+        <comment></comment>
+    </data>      
+    <data name="Contact_LicenseLabel" xml:space="preserve">
+        <value>Licencia: </value>
+        <comment></comment>
+    </data>
+
+    <!-- ALERT -->
+    <data name="Alert_AcceptButtonText" xml:space="preserve">
+        <value>ACEPTAR</value>
+        <comment></comment>
+    </data>
+
+    <!-- FREQUENT QUESTIONS -->
+    <data name="FrequentQuestions_HelpTitleLabel" xml:space="preserve">
+        <value>Estamos para ayudarle</value>
+        <comment></comment>
+    </data>
+    <data name="FrequentQuestions_FindLabel" xml:space="preserve">
+        <value>Buscar</value>
+        <comment></comment>
+    </data>
+    <data name="FrequentQuestions_ListEmptyLabel" xml:space="preserve">
+        <value>Su criterio de búsqueda no obtuvo resultados, pruebe nuevamente con otros criterios.</value>
+        <comment></comment>
+    </data>
+    <data name="FrequentQuestions_InsuranceRedirectLabel" xml:space="preserve">
+        <value>Para ver los seguros disponibles,</value>
+        <comment></comment>
+    </data>
+    <data name="FrequentQuestions_InsuranceRedirectButton" xml:space="preserve">
+        <value>Haga Click Aquí</value>
+        <comment></comment>
+    </data>
+    
+    <!-- INSURANCE QUOTE -->
+    <data name="InsuranceQuote_ButtonLabel" xml:space="preserve">
+        <value>SOLICITAR COTIZACIÓN</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_TitleLabel" xml:space="preserve">
+        <value>Cotizaciones</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_BenefitLabel" xml:space="preserve">
+        <value>Beneficios</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_TermsLabel" xml:space="preserve">
+        <value>Condiciones</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_SendButtonText" xml:space="preserve">
+        <value>ENVIAR COTIZACIÓN</value>
+        <comment></comment>
+    </data>    
+    <data name="InsuranceQuote_FooterText" xml:space="preserve">
+        <value>BN Corredora</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_PopupTitle" xml:space="preserve">
+        <value>Solicitud enviada</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_PopupErrorTitle" xml:space="preserve">
+        <value>Envío de correo fallido</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_PopupMessage" xml:space="preserve">
+        <value>La información de las cotizaciones seleccionadas ha sido enviada a su correo electrónico.</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_PopupErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! Su solicitud de cotización no puede ser procesada en este momento.</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_ErrorTitle" xml:space="preserve">
+        <value>Error</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_ErrorMessage" xml:space="preserve">
+        <value>¡Lo sentimos! Su solicitud no puede ser procesada en este momento.</value>
+        <comment></comment>
+    </data>
+    <data name="InsuranceQuote_ProgressDialogSendingData" xml:space="preserve">
+        <value>Enviando datos</value>
+        <comment></comment>
+    </data>
+</root>

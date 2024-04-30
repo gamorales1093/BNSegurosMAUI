@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Forced"
+             xmlns:effects="clr-namespace:BNSegurosMAUI.Effects"
+             xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="BNSegurosMAUI.Views.SinisterStepsPage"
+             BackgroundColor="White"
+             FlowDirection="LeftToRight"
+             Title="{Binding Title}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="stepTemplate">
+                <ContentView>
+                    <Frame Style="{StaticResource ItemCellFrameStyle}" BackgroundColor="White" VerticalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand">
+
+                            <Grid   Margin="10,15,10,15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" WidthRequest="{OnPlatform Android='53',iOS='60'}" VerticalOptions="Center">
+                                    <Frame CornerRadius="{OnPlatform Android='30',iOS='30'}"
+                                            HeightRequest="{OnPlatform Android='52',iOS='60'}"
+                                            BackgroundColor="#FFFFFF"
+                                            HasShadow="False"
+                                            BorderColor="#23387A"
+                                            IsClippedToBounds="True">
+                                        <Label HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap"
+                                               MaxLines="2"
+                                               Margin="{OnPlatform Android='0,-11,0,0',iOS='0'}"
+                                               Text="{Binding Priority}" TextColor="#23387A"
+                                               FontFamily="AvenirBook"
+                                               FontSize="{OnPlatform Android='21',iOS='18'}"
+                                               FontAttributes="Bold"/>
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"  VerticalOptions="FillAndExpand">
+                                    <Label
+                                        TextColor="#2A2A2A"
+                                        Text="{Binding Description}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        FontSize="14"
+
+                                        MaxLines="3"
+                                        LineBreakMode="WordWrap"
+                                        Margin="12,0,0,0" />
+                                    <!--DESCARGAR PDF-->
+                                    <StackLayout Orientation="Horizontal" Margin="10,5,0,0" IsVisible="{Binding ShowDownloadPdfFile}">
+                                        <Image Source="icdownload" WidthRequest="20" VerticalOptions="Center"/>
+                                        <Label Margin="5,0,0,0" Style="{StaticResource ItemInsuranceButtonStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" VerticalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Formulario" Style="{StaticResource ItemInsuranceButtonStyle}" 
+                                                          TextColor="{DynamicResource BlueTextColor}" FontAttributes="Bold"
+                                                          >
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding PdfFile}" Command="{Binding BindingContext.DownloadPdfCommand, Source={x:Reference ItemList}}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                    <!--SUBIR PDF-->
+                                    <StackLayout Orientation="Horizontal" Margin="10,-5,0,0" IsVisible="{Binding ShowUploadPdfFile}">
+                                        <Image Source="icupload"  WidthRequest="20" VerticalOptions="Center"/>
+                                        <Label Margin="5,0,0,0" Style="{StaticResource ItemInsuranceButtonStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" VerticalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Presentar reclamo" Style="{StaticResource ItemInsuranceButtonStyle}"
+                                                          TextColor="{DynamicResource BlueTextColor}" FontAttributes="Bold"
+                                                      >
+
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding OpaForm}" Command="{Binding BindingContext.UploadPdfCommand, Source={x:Reference ItemList}}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <Frame.Effects>
+                            <effects:ShadowEffect Radius="{OnPlatform Android='2',iOS='0.5'}" Color="Gray" />
+                        </Frame.Effects>
+                    </Frame>
+                </ContentView>
+            </DataTemplate>
+            <DataTemplate x:Key="textTemplate">
+                <StackLayout
+                    Margin="{OnPlatform Android='0,0,0,0', iOS='0,0,0,0'}"
+                    Orientation="Vertical"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="#FFFFFF">
+                    <Label Text="*Existen distintas modalidades de Seguros de Vida, para conocer más información sobre el tipo de seguro que posee y sus condiciones comuniquese con nosotros al 2212-9970"
+                            TextColor="#7B8794"
+                            FontSize="14" FontFamily="AvenirBook"
+                            Margin="{OnPlatform Android='20,20,20,20', iOS='20,20,20,30'}"/>
+                </StackLayout>
+            </DataTemplate>
+
+            <controls:SinesterStepsTemplateSelector x:Key="sinesterStepsTemplateSelector" StepTemplate="{StaticResource stepTemplate}" TextTemplate="{StaticResource textTemplate}"/>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}"  BackgroundColor="#23387A" Margin="0,-5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1"  FontFamily="AvenirBookBold" FontAttributes="Bold" FontSize="{OnPlatform Android='20', iOS='18'}" Text="{Binding Title}" Margin="0,0,0,0" HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}" VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+            <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand">
+                <CollectionView x:Name="ItemList" Grid.Row="1" ItemsSource="{Binding DisplayedItems}" SelectionChanged="SelectionChanged" SelectionMode="Single" ItemTemplate="{StaticResource sinesterStepsTemplateSelector}" VerticalOptions="Fill">
+
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

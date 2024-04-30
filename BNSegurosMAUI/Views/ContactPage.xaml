@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             xmlns:localView="clr-namespace:BNSegurosMAUI.Views"
+             x:Class="BNSegurosMAUI.Views.ContactPage"
+             FlowDirection="LeftToRight"
+             SelectedTabColor="#AFBD20"
+             UnselectedTabColor="#FFFFFF"
+             BarBackgroundColor="{x:StaticResource HomePageBackgroundColor}"
+             BackgroundColor="{x:StaticResource HomePageBackgroundColor}"
+             Title="{Binding Title}">
+        <localView:ContactAgentPage IconImageSource="icbn" />
+        <localView:ContactAgentListPage IconImageSource="icuser" />
+        <localView:ContactAssistancePage IconImageSource="icphone" />
+
+</TabbedPage>

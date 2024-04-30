@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Automatic"
+             xmlns:utils="clr-namespace:BNSegurosMAUI.Utils"
+             xmlns:controls="clr-namespace:BNSegurosMAUI.Views.Controls"
+             xmlns:validate="clr-namespace:BNSegurosMAUI.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="BNSegurosMAUI.Views.RequestInsurancePage"
+             BackgroundColor="{x:StaticResource PageBackgroundColor}"
+             Title="{Binding Title}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#23387A" StatusBarStyle="Default"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#FFFFFF" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform Android='60', iOS='40'}" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Padding="{OnPlatform Android='10,5,20,0', iOS='15,0,0,10'}" Margin="0,-5,0,0" BackgroundColor="#23387A">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout BackgroundColor="#23387A" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                    <Image Source="backarrowicbtn" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <Button HeightRequest="30" WidthRequest="30" AbsoluteLayout.LayoutBounds="0.2,0.2,20,20" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding CloseCommand}"/>
+                </AbsoluteLayout>
+                <Label Grid.Column="1" FontAttributes="Bold" FontSize="{OnPlatform Android='20', iOS='18'}" Text="{Binding Title}" Margin="0,0,0,0" HorizontalOptions="{OnPlatform Android='StartAndExpand', iOS='CenterAndExpand'}" VerticalOptions="CenterAndExpand" TextColor="#FFFFFF"/>
+            </Grid>
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Margin="29,30,29,0">
+                    <Label Style="{StaticResource FormTitleStyle}" Text="{utils:Text Request_PersonalDataTitle}"/>
+
+                    <!-- Name -->
+                    <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_NameLabel}" />
+                    <controls:MainEntry Style="{StaticResource MainEntryStyle}" x:Name="firstText"
+                                        BorderColor="{Binding ErrorName,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                        Text="{Binding Name}"
+                                        Placeholder="{utils:Text Request_NamePlaceholder}"
+                                        Keyboard="Plain">
+                        <controls:MainEntry.Behaviors>
+                            <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="Name"></prism:EventToCommandBehavior>
+                        </controls:MainEntry.Behaviors>
+                    </controls:MainEntry>
+                    <StackLayout IsVisible="{Binding ErrorName}">
+                        <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorNameResult}"/>
+                    </StackLayout>
+
+                    <!-- LastName -->
+                    <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_LastNameLabel}" />
+                    <controls:MainEntry Style="{StaticResource MainEntryStyle}"
+                                        BorderColor="{Binding ErrorLastName,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                        Text="{Binding LastName}"
+                                        Placeholder="{utils:Text Request_LastNamePlaceholder}"
+                                        Keyboard="Plain">
+                        <controls:MainEntry.Behaviors>
+                            <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="LastName"></prism:EventToCommandBehavior>
+                        </controls:MainEntry.Behaviors>
+                    </controls:MainEntry>
+                    <StackLayout IsVisible="{Binding ErrorLastName}">
+                        <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorLastNameResult}"/>
+                    </StackLayout>
+
+                    <!-- Type ID -->
+                    <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_TypeIdLabel}" />
+                    <controls:DropDown Style="{StaticResource DropdownStyle}" HorizontalOptions="FillAndExpand"
+                                       BorderColor="{Binding ErrorTypeId, Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                       HeaderText="{Binding TypeId}"
+                                       ListSource="{Binding TypeIds}">
+                    </controls:DropDown>
+                    <StackLayout IsVisible="{Binding ErrorTypeId}">
+                        <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorIdResult}"/>
+                    </StackLayout>
+
+                    <!-- ID -->
+                    <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_IdNumberLabel}" />
+                    <controls:MainEntry Style="{StaticResource MainEntryStyle}"
+                                        BorderColor="{Binding ErrorId,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                        Text="{Binding IdNumber}"
+                                        Placeholder="{utils:Text Request_IdNumberPlaceholder}"
+                                        Keyboard="Numeric">
+                        <controls:MainEntry.Behaviors>
+                            <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="Id"></prism:EventToCommandBehavior>
+                        </controls:MainEntry.Behaviors>
+                    </controls:MainEntry>
+                    <StackLayout IsVisible="{Binding ErrorId}">
+                        <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorIdNumberResult}"/>
+                    </StackLayout>
+
+                    <!-- Sex Gender -->
+                    <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_SexGenderLabel}" />
+                    <controls:DropDown Style="{StaticResource DropdownStyle}" HorizontalOptions="FillAndExpand"
+                                       BorderColor="{Binding ErrorGender, Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                       HeaderText="{Binding Gender}"
+                                       ListSource="{Binding Genders}"/>
+                    <StackLayout IsVisible="{Binding ErrorGender}">
+                        <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{utils:Text Request_DropDownMessage}"/>
+                    </StackLayout>
+
+                    <!-- Birthday -->
+                    <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_BirthdayLabel}" />
+                    <controls:MainDatePicker Date="{Binding Date, Mode=TwoWay}"
+                                             Style="{StaticResource MainDatePickerStyle}"
+                                             BorderColor="{Binding ErrorDate,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                             Placeholder="{utils:Text Request_BirthdayPlaceholder}">
+                        <controls:MainDatePicker.Behaviors>
+                            <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding DatePickerUnfocusedCommand}"></prism:EventToCommandBehavior>
+                        </controls:MainDatePicker.Behaviors>
+                    </controls:MainDatePicker>
+                    <StackLayout IsVisible="{Binding ErrorDate}">
+                        <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{utils:Text Request_InvalidDateMessage}"/>
+                    </StackLayout>
+
+                    <!-- Telephone -->
+                    <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_TelephoneLabel}" />
+                    <controls:MainEntry Style="{StaticResource MainEntryStyle}"
+                                        BorderColor="{Binding ErrorTelephone,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                        Text="{Binding Telephone}"
+                                        Placeholder="{utils:Text Request_TelephonePlaceholder}"
+                                        Keyboard="Numeric"
+                                        MaxLength="9">
+                        <controls:MainEntry.Behaviors>
+                            <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="Telephone"></prism:EventToCommandBehavior>
+                        </controls:MainEntry.Behaviors>
+                    </controls:MainEntry>
+                    <StackLayout IsVisible="{Binding ErrorTelephone}">
+                        <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorTelephoneResult}"/>
+                    </StackLayout>
+
+                    <!-- Email -->
+                    <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_EmailLabel}" />
+                    <controls:MainEntry Style="{StaticResource MainEntryStyle}"
+                                        BorderColor="{Binding ErrorEmail,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                        Text="{Binding Email}"
+                                        Placeholder="{utils:Text Request_EmailPlaceholder}"
+                                        Keyboard="Email">
+                        <controls:MainEntry.Behaviors>
+                            <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="Email"></prism:EventToCommandBehavior>
+                        </controls:MainEntry.Behaviors>
+                    </controls:MainEntry>
+                    <StackLayout IsVisible="{Binding ErrorEmail}">
+                        <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorEmailResult}"/>
+                    </StackLayout>
+
+                    <!-- MAPFRE (MEDICAL) SPECIFIC DATA -->
+                    <StackLayout IsVisible="{Binding InsuranceMedicalIsVisible}" Margin="0,20,0,0" HorizontalOptions="StartAndExpand">
+                        <Label Style="{StaticResource FormTitleStyle}" Text="{utils:Text Request_SpecificDataTitle}"/>
+
+                        <!-- Type Insurance Plan -->
+                        <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_MapfreTypeInsuranceLabel}" />
+                        <controls:DropDown Style="{StaticResource DropdownStyle}" HorizontalOptions="FillAndExpand"
+                                           BorderColor="{Binding ErrorTypeInsurancePlan, Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                           HeaderText="{Binding TypeInsurancePlan}"
+                                           ListSource="{Binding TypeInsurancePlans}"/>
+                        <StackLayout IsVisible="{Binding ErrorTypeInsurancePlan}">
+                            <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{utils:Text Request_DropDownMessage}"/>
+                        </StackLayout>
+
+                        <!-- How Many -->
+                        <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_MapfreHowManyLabel}" />
+                        <controls:DropDown Style="{StaticResource DropdownStyle}" HorizontalOptions="FillAndExpand"
+                                           BorderColor="{Binding ErrorHowMany, Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                           HeaderText="{Binding HowMany}"
+                                           ListSource="{Binding HowManyPersons}"/>
+                        <StackLayout IsVisible="{Binding ErrorHowMany}">
+                            <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{utils:Text Request_DropDownMessage}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- SAGICOR (JOBLESS) SPECIFIC DATA -->
+                    <StackLayout IsVisible="{Binding InsuranceJoblessIsVisible}" Margin="0,20,0,0">
+                        <Label Style="{StaticResource FormTitleStyle}" Text="{utils:Text Request_SpecificDataTitle}"/>
+
+                        <!-- Type Currency -->
+                        <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_SagicorTypeCurrencyLabel}" />
+                        <controls:DropDown Style="{StaticResource DropdownStyle}" HorizontalOptions="FillAndExpand"
+                                           BorderColor="{Binding ErrorTypeCurrency, Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                           HeaderText="{Binding TypeCurrency}"
+                                           ListSource="{Binding Currency}"/>
+                        <StackLayout IsVisible="{Binding ErrorTypeCurrency}">
+                            <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{utils:Text Request_DropDownMessage}"/>
+                        </StackLayout>
+
+                        <!-- Credit Quota -->
+                        <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_SagicorCreditQuotaLabel}" />
+                        <controls:MainEntry Style="{StaticResource MainEntryStyle}"
+                                            BorderColor="{Binding ErrorCreditQuote,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                            Text="{Binding CreditQuote}"
+                                            Placeholder="{utils:Text Request_SagicorCreditQuotaPlaceholder}"
+                                            Keyboard="Numeric">
+                            <controls:MainEntry.Behaviors>
+                                <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="CreditQuote"></prism:EventToCommandBehavior>
+                            </controls:MainEntry.Behaviors>
+                        </controls:MainEntry>
+                        <StackLayout IsVisible="{Binding ErrorCreditQuote}">
+                            <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorCreditQuoteResult}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- ISTMO (HOME) SPECIFIC DATA -->
+                    <!-- Use the birthday for get the user age -->
+
+                    <!-- OTHERS SPECIFIC DATA -->
+                    <StackLayout IsVisible="{Binding InsuranceOthersIsVisible}" Margin="0,20,0,0">
+                        <Label Style="{StaticResource FormTitleStyle}" Text="{utils:Text Request_SpecificDataTitle}"/>
+
+                        <!-- Type Insurance -->
+                        <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_OthersTypeInsuranceLabel}" />
+                        <controls:DropDown Style="{StaticResource DropdownStyle}" HorizontalOptions="FillAndExpand"
+                                           BorderColor="{Binding ErrorTypeInsurance, Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                           HeaderText="{Binding TypeInsurance}"
+                                           ListSource="{Binding TypeInsurances}"/>
+                        <StackLayout IsVisible="{Binding ErrorTypeInsurance}">
+                            <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{utils:Text Request_DropDownMessage}"/>
+                        </StackLayout>
+
+                        <!-- Other insurance -->
+                        <StackLayout IsVisible="{Binding OtherInsuranceEntryIsVisible}">
+                            <Label Style="{StaticResource FormInputLabelStyle}" Text="¿Qué desea asegurar?" />
+                            <controls:MainEntry Style="{StaticResource MainEntryStyle}"
+                                                BorderColor="{Binding ErrorOtherInsuranceEntry,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                                Text="{Binding OtherInsuranceEntry}"
+                                                MaxLength="80"
+                                                Placeholder="Tipo de seguro"
+                                                Keyboard="Text">
+                                <controls:MainEntry.Behaviors>
+                                    <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="OtherInsuranceEntry"></prism:EventToCommandBehavior>
+                                </controls:MainEntry.Behaviors>
+                            </controls:MainEntry>
+                            <StackLayout IsVisible="{Binding ErrorOtherInsuranceEntry}">
+                                <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorOtherInsuranceEntryResult}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- BICYCLE INSURANCE SPECIFIC DATA -->
+                    <StackLayout IsVisible="{Binding InsuranceBicycleIsVisible}" Margin="0,20,0,0">
+                        <Label Style="{StaticResource FormTitleStyle}" Text="{utils:Text Request_SpecificDataTitle}"/>
+
+                        <!-- Type Currency -->
+                        <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_TypeCurrencyLabel}" />
+                        <controls:DropDown Style="{StaticResource DropdownStyle}"  HorizontalOptions="FillAndExpand"
+                                           BorderColor="{Binding ErrorBicycleTypeCurrency, Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                           HeaderText="{Binding BicycleTypeCurrency}"
+                                           ListSource="{Binding BicycleCurrency}"/>
+                        <StackLayout IsVisible="{Binding ErrorBicycleTypeCurrency}">
+                            <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{utils:Text Request_DropDownMessage}"/>
+                        </StackLayout>
+
+                        <!-- Bicycle Value -->
+                        <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_BicycleValueLabel}" />
+                        <controls:MainEntry Style="{StaticResource MainEntryStyle}"
+                                            BorderColor="{Binding ErrorBicycleValue,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                            Text="{Binding BicycleValue}"
+                                            Placeholder="{utils:Text Request_BicycleValueLabel}"
+                                            Keyboard="Numeric">
+                            <controls:MainEntry.Behaviors>
+                                <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="BicycleValue"></prism:EventToCommandBehavior>
+                            </controls:MainEntry.Behaviors>
+                        </controls:MainEntry>
+                        <StackLayout IsVisible="{Binding ErrorBicycleValue}">
+                            <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorBicycleValueResult}"/>
+                        </StackLayout>
+
+                        <!-- Bicycle Year -->
+                        <Label Style="{StaticResource FormInputLabelStyle}" Text="{utils:Text Request_BicycleYearLabel}" />
+                        <controls:MainEntry Style="{StaticResource MainEntryStyle}"
+                                            BorderColor="{Binding ErrorBicycleYear,Converter={StaticResource ChangeBorderColorConverter},Mode=TwoWay}"
+                                            Text="{Binding BicycleYear}"
+                                            Placeholder="{utils:Text Request_BicycleYearLabel}"
+                                            Keyboard="Numeric"
+                                            MaxLength="4">
+                            <controls:MainEntry.Behaviors>
+                                <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryUnfocusedCommand}" CommandParameter="BicycleYear"></prism:EventToCommandBehavior>
+                            </controls:MainEntry.Behaviors>
+                        </controls:MainEntry>
+                        <StackLayout IsVisible="{Binding ErrorBicycleYear}">
+                            <Label Style="{StaticResource InsuranceQuoteRequiredDataLabelStyle}" Text="{Binding ErrorBicycleYearResult}"/>
+                        </StackLayout>
+
+                        <!-- Request Accident Insurance -->
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,0" BackgroundColor="#FFFFFF">
+                            <Frame  BorderColor="Transparent"  Padding="0" HasShadow="False" BackgroundColor="#FFFFFF">
+                                <CheckBox IsChecked="{Binding AccidentAndAssist}" Style="{x:StaticResource CheckBoxStyle}">
+                                    <CheckBox.Behaviors>
+                                        <prism:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding CheckAccidentAndAssistCommand}"/>
+                                    </CheckBox.Behaviors>
+                                </CheckBox>
+                            </Frame>
+                            <Frame BorderColor="Transparent" Padding="{OnPlatform Android='0,0,0,0', iOS='0,7,0,0'}"  Margin="{OnPlatform Android='0,0,15,0', iOS='0,0,15,0'}" HasShadow="False" BackgroundColor="#FFFFFF" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                <Label Style="{x:StaticResource TermsAndConditionsStyle}"
+                                        Text="{utils:Text Request_RequestAccidentBicycleInsuranceLabel}" />
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- Terms and conditions -->
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,10" BackgroundColor="#FFFFFF">
+                        <Frame Padding="0" BorderColor="Transparent" HasShadow="False" BackgroundColor="#FFFFFF">
+                            <CheckBox IsChecked="{Binding Accept}" Style="{x:StaticResource CheckBoxStyle}">
+                                <CheckBox.Behaviors>
+                                    <prism:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding CheckTermAndConditionsCommand}"/>
+                                </CheckBox.Behaviors>
+                            </CheckBox>
+                        </Frame>
+                        <Frame BorderColor="Transparent"  Padding="0" HasShadow="False" BackgroundColor="#FFFFFF">
+                            <Button Style="{x:StaticResource TermsAndConditionsStyle}"
+                                    Text="{utils:Text Request_AceptTermsAndConditionsLabel}"
+                                    Command="{Binding TermAndConditionsCommand}" />
+                        </Frame>
+                    </StackLayout>
+
+                    <!-- QUOTE ISTMO (HOME) -->
+                    <StackLayout IsVisible="{Binding InsuranceHomeIsVisible}">
+                        <Button Margin="{OnPlatform Android='0,0,0,30', iOS='0,0,0,10'}" Style="{x:StaticResource RequestInsuranceButtonStyle}" Text="{utils:Text InsuranceQuote_ButtonLabel}" Command="{Binding ShowInsuranceQuoteHomeCommand}" />
+                    </StackLayout>
+                    <!-- SAGICOR (JOBLESS) -->
+                    <StackLayout IsVisible="{Binding InsuranceJoblessIsVisible}">
+                        <Button Margin="{OnPlatform Android='0,0,0,30', iOS='0,0,0,10'}" Style="{x:StaticResource RequestInsuranceButtonStyle}" Text="{utils:Text InsuranceQuote_ButtonLabel}" Command="{Binding ShowInsuranceQuoteJoblessCommand}" />
+                    </StackLayout>
+                    <!-- MAPFRE (MEDICAL) -->
+                    <StackLayout IsVisible="{Binding InsuranceMedicalIsVisible}">
+                        <Button Margin="{OnPlatform Android='0,0,0,30', iOS='0,0,0,10'}" Style="{x:StaticResource RequestInsuranceButtonStyle}" Text="{utils:Text InsuranceQuote_ButtonLabel}" Command="{Binding ShowInsuranceQuoteMedicalCommand}" />
+                    </StackLayout>
+                    <!-- QUOTE OTHER -->
+                    <StackLayout IsVisible="{Binding InsuranceOthersIsVisible}">
+                        <Button Margin="{OnPlatform Android='0,0,0,30', iOS='0,0,0,10'}" Style="{x:StaticResource RequestInsuranceButtonStyle}" Text="{utils:Text InsuranceQuote_ButtonLabel}" Command="{Binding ShowInsuranceQuoteOthersCommand}" />
+                    </StackLayout>
+                    <!--BICYCLE INSURANCE-->
+                    <StackLayout IsVisible="{Binding InsuranceBicycleIsVisible}">
+                        <Button  Margin="{OnPlatform Android='0,0,0,30', iOS='0,0,0,10'}" Style="{x:StaticResource RequestInsuranceButtonStyle}" Text="{utils:Text InsuranceQuote_ButtonLabel}" Command="{Binding ShowInsuranceBicycleCommand}" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
